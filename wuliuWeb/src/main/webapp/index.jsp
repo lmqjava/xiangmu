@@ -64,7 +64,7 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="kitNavbar" kit-navbar>
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> 员工管理</span></a>
+                    <a class="" href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> 员工管理11111111</span></a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" kit-target
