@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/wuliu.iml" filepath="$PROJECT_DIR$/wuliu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wuliuDubbo/wuliuDubbo.iml" filepath="$PROJECT_DIR$/wuliuDubbo/wuliuDubbo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wuliuDubbo/wuliuInterface/wuliuInterface.iml" filepath="$PROJECT_DIR$/wuliuDubbo/wuliuInterface/wuliuInterface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wuliuMapper/wuliuMapper.iml" filepath="$PROJECT_DIR$/wuliuMapper/wuliuMapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wuliuPojo/wuliuPojo.iml" filepath="$PROJECT_DIR$/wuliuPojo/wuliuPojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wuliuDubbo/wuliuService/wuliuService.iml" filepath="$PROJECT_DIR$/wuliuDubbo/wuliuService/wuliuService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wuliuUtils/wuliuUtils.iml" filepath="$PROJECT_DIR$/wuliuUtils/wuliuUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wuliuWeb/wuliuWeb.iml" filepath="$PROJECT_DIR$/wuliuWeb/wuliuWeb.iml" />
+    </modules>
+  </component>
+</project>

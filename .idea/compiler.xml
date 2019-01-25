@@ -14,5 +14,15 @@
         <module name="wuliuWeb" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="wuliu" target="1.8" />
+      <module name="wuliuDubbo" target="1.8" />
+      <module name="wuliuInterface" target="1.8" />
+      <module name="wuliuMapper" target="1.8" />
+      <module name="wuliuPojo" target="1.8" />
+      <module name="wuliuService" target="1.8" />
+      <module name="wuliuUtils" target="1.8" />
+      <module name="wuliuWeb" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

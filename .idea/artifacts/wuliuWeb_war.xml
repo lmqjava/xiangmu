@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="wuliuWeb:war">
+    <output-path>$PROJECT_DIR$/wuliuWeb/target</output-path>
+    <root id="archive" name="wuliuWeb-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="wuliuWeb:war exploded" />
+    </root>
+  </artifact>
+</component>
