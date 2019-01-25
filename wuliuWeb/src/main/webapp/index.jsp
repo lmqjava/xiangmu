@@ -168,7 +168,7 @@
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" kit-target
                                data-options="{url:'navbar.html',icon:'&#xe658;',title:'Navbar',id:'6'}"><i
-                                class="layui-icon">&#xe658;</i><span> Navbar</span></a></dd>
+                                class="layui-icon">&#xe658;</i><span> 支出</span></a></dd>
                         <dd><a href="javascript:;" kit-target
                                data-options="{url:'tab.html',icon:'&#xe658;',title:'TAB',id:'7'}"><i class="layui-icon">&#xe658;</i><span> Tab</span></a>
                         </dd>
