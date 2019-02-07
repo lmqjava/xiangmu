@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuliu.mapper.ClientMapper" >
+  <resultMap id="BaseResultMap" type="com.wuliu.pojo.Client" >
+    <id column="clientid" property="clientid" jdbcType="INTEGER" />
+    <result column="clientusername" property="clientusername" jdbcType="VARCHAR" />
+    <result column="clientaddress" property="clientaddress" jdbcType="VARCHAR" />
+    <result column="clientphone" property="clientphone" jdbcType="VARCHAR" />
+    <result column="clientemail" property="clientemail" jdbcType="VARCHAR" />
+    <result column="clientpassword" property="clientpassword" jdbcType="VARCHAR" />
+    <result column="clientpasswordquestion" property="clientpasswordquestion" jdbcType="VARCHAR" />
+    <result column="clientpasswordanswer" property="clientpasswordanswer" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    clientid, clientusername, clientaddress, clientphone, clientemail, clientpassword, 
+    clientpasswordquestion, clientpasswordanswer
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wuliu.pojo.ClientExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from client
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from client
+    where clientid = #{clientid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from client
+    where clientid = #{clientid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wuliu.pojo.ClientExample" >
+    delete from client
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wuliu.pojo.Client" >
+    insert into client (clientid, clientusername, clientaddress, 
+      clientphone, clientemail, clientpassword, 
+      clientpasswordquestion, clientpasswordanswer
+      )
+    values (#{clientid,jdbcType=INTEGER}, #{clientusername,jdbcType=VARCHAR}, #{clientaddress,jdbcType=VARCHAR}, 
+      #{clientphone,jdbcType=VARCHAR}, #{clientemail,jdbcType=VARCHAR}, #{clientpassword,jdbcType=VARCHAR}, 
+      #{clientpasswordquestion,jdbcType=VARCHAR}, #{clientpasswordanswer,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wuliu.pojo.Client" >
+    insert into client
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clientid != null" >
+        clientid,
+      </if>
+      <if test="clientusername != null" >
+        clientusername,
+      </if>
+      <if test="clientaddress != null" >
+        clientaddress,
+      </if>
+      <if test="clientphone != null" >
+        clientphone,
+      </if>
+      <if test="clientemail != null" >
+        clientemail,
+      </if>
+      <if test="clientpassword != null" >
+        clientpassword,
+      </if>
+      <if test="clientpasswordquestion != null" >
+        clientpasswordquestion,
+      </if>
+      <if test="clientpasswordanswer != null" >
+        clientpasswordanswer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clientid != null" >
+        #{clientid,jdbcType=INTEGER},
+      </if>
+      <if test="clientusername != null" >
+        #{clientusername,jdbcType=VARCHAR},
+      </if>
+      <if test="clientaddress != null" >
+        #{clientaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="clientphone != null" >
+        #{clientphone,jdbcType=VARCHAR},
+      </if>
+      <if test="clientemail != null" >
+        #{clientemail,jdbcType=VARCHAR},
+      </if>
+      <if test="clientpassword != null" >
+        #{clientpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="clientpasswordquestion != null" >
+        #{clientpasswordquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="clientpasswordanswer != null" >
+        #{clientpasswordanswer,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wuliu.pojo.ClientExample" resultType="java.lang.Integer" >
+    select count(*) from client
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update client
+    <set >
+      <if test="record.clientid != null" >
+        clientid = #{record.clientid,jdbcType=INTEGER},
+      </if>
+      <if test="record.clientusername != null" >
+        clientusername = #{record.clientusername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientaddress != null" >
+        clientaddress = #{record.clientaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientphone != null" >
+        clientphone = #{record.clientphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientemail != null" >
+        clientemail = #{record.clientemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientpassword != null" >
+        clientpassword = #{record.clientpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientpasswordquestion != null" >
+        clientpasswordquestion = #{record.clientpasswordquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.clientpasswordanswer != null" >
+        clientpasswordanswer = #{record.clientpasswordanswer,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update client
+    set clientid = #{record.clientid,jdbcType=INTEGER},
+      clientusername = #{record.clientusername,jdbcType=VARCHAR},
+      clientaddress = #{record.clientaddress,jdbcType=VARCHAR},
+      clientphone = #{record.clientphone,jdbcType=VARCHAR},
+      clientemail = #{record.clientemail,jdbcType=VARCHAR},
+      clientpassword = #{record.clientpassword,jdbcType=VARCHAR},
+      clientpasswordquestion = #{record.clientpasswordquestion,jdbcType=VARCHAR},
+      clientpasswordanswer = #{record.clientpasswordanswer,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wuliu.pojo.Client" >
+    update client
+    <set >
+      <if test="clientusername != null" >
+        clientusername = #{clientusername,jdbcType=VARCHAR},
+      </if>
+      <if test="clientaddress != null" >
+        clientaddress = #{clientaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="clientphone != null" >
+        clientphone = #{clientphone,jdbcType=VARCHAR},
+      </if>
+      <if test="clientemail != null" >
+        clientemail = #{clientemail,jdbcType=VARCHAR},
+      </if>
+      <if test="clientpassword != null" >
+        clientpassword = #{clientpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="clientpasswordquestion != null" >
+        clientpasswordquestion = #{clientpasswordquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="clientpasswordanswer != null" >
+        clientpasswordanswer = #{clientpasswordanswer,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where clientid = #{clientid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wuliu.pojo.Client" >
+    update client
+    set clientusername = #{clientusername,jdbcType=VARCHAR},
+      clientaddress = #{clientaddress,jdbcType=VARCHAR},
+      clientphone = #{clientphone,jdbcType=VARCHAR},
+      clientemail = #{clientemail,jdbcType=VARCHAR},
+      clientpassword = #{clientpassword,jdbcType=VARCHAR},
+      clientpasswordquestion = #{clientpasswordquestion,jdbcType=VARCHAR},
+      clientpasswordanswer = #{clientpasswordanswer,jdbcType=VARCHAR}
+    where clientid = #{clientid,jdbcType=INTEGER}
+  </update>
+</mapper>

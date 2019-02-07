@@ -13,9 +13,10 @@
   <dubbo:application name="wuliuService"/>
   
  
-   <dubbo:registry address="zookeeper://10.12.153.175:2181"/>  
+   <!--<dubbo:registry address="zookeeper://10.12.153.175:2181"/>  -->
   <!-- <dubbo:registry address="zookeeper://192.168.3.12:2181"/>   -->
-  
+     <dubbo:registry address="zookeeper://192.168.11.132:2181"/>
+
   <dubbo:protocol name="dubbo" port="29012"/>
   <!-- 对外暴露的服务接口 -->
  

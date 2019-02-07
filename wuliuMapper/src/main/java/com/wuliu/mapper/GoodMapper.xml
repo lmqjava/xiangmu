@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuliu.mapper.GoodMapper" >
+  <resultMap id="BaseResultMap" type="com.wuliu.pojo.Good" >
+    <id column="goodid" property="goodid" jdbcType="INTEGER" />
+    <result column="deliveryreceiptid" property="deliveryreceiptid" jdbcType="INTEGER" />
+    <result column="orderlistid" property="orderlistid" jdbcType="INTEGER" />
+    <result column="goodname" property="goodname" jdbcType="VARCHAR" />
+    <result column="goodnum" property="goodnum" jdbcType="INTEGER" />
+    <result column="goodprice" property="goodprice" jdbcType="DECIMAL" />
+    <result column="goodtiji" property="goodtiji" jdbcType="REAL" />
+    <result column="goodzhongliang" property="goodzhongliang" jdbcType="REAL" />
+    <result column="goodmiaoshu" property="goodmiaoshu" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    goodid, deliveryreceiptid, orderlistid, goodname, goodnum, goodprice, goodtiji, goodzhongliang, 
+    goodmiaoshu
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wuliu.pojo.GoodExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from good
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from good
+    where goodid = #{goodid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from good
+    where goodid = #{goodid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wuliu.pojo.GoodExample" >
+    delete from good
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wuliu.pojo.Good" >
+    insert into good (goodid, deliveryreceiptid, orderlistid, 
+      goodname, goodnum, goodprice, 
+      goodtiji, goodzhongliang, goodmiaoshu
+      )
+    values (#{goodid,jdbcType=INTEGER}, #{deliveryreceiptid,jdbcType=INTEGER}, #{orderlistid,jdbcType=INTEGER}, 
+      #{goodname,jdbcType=VARCHAR}, #{goodnum,jdbcType=INTEGER}, #{goodprice,jdbcType=DECIMAL}, 
+      #{goodtiji,jdbcType=REAL}, #{goodzhongliang,jdbcType=REAL}, #{goodmiaoshu,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wuliu.pojo.Good" >
+    insert into good
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodid != null" >
+        goodid,
+      </if>
+      <if test="deliveryreceiptid != null" >
+        deliveryreceiptid,
+      </if>
+      <if test="orderlistid != null" >
+        orderlistid,
+      </if>
+      <if test="goodname != null" >
+        goodname,
+      </if>
+      <if test="goodnum != null" >
+        goodnum,
+      </if>
+      <if test="goodprice != null" >
+        goodprice,
+      </if>
+      <if test="goodtiji != null" >
+        goodtiji,
+      </if>
+      <if test="goodzhongliang != null" >
+        goodzhongliang,
+      </if>
+      <if test="goodmiaoshu != null" >
+        goodmiaoshu,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodid != null" >
+        #{goodid,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryreceiptid != null" >
+        #{deliveryreceiptid,jdbcType=INTEGER},
+      </if>
+      <if test="orderlistid != null" >
+        #{orderlistid,jdbcType=INTEGER},
+      </if>
+      <if test="goodname != null" >
+        #{goodname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodnum != null" >
+        #{goodnum,jdbcType=INTEGER},
+      </if>
+      <if test="goodprice != null" >
+        #{goodprice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodtiji != null" >
+        #{goodtiji,jdbcType=REAL},
+      </if>
+      <if test="goodzhongliang != null" >
+        #{goodzhongliang,jdbcType=REAL},
+      </if>
+      <if test="goodmiaoshu != null" >
+        #{goodmiaoshu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wuliu.pojo.GoodExample" resultType="java.lang.Integer" >
+    select count(*) from good
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update good
+    <set >
+      <if test="record.goodid != null" >
+        goodid = #{record.goodid,jdbcType=INTEGER},
+      </if>
+      <if test="record.deliveryreceiptid != null" >
+        deliveryreceiptid = #{record.deliveryreceiptid,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderlistid != null" >
+        orderlistid = #{record.orderlistid,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodname != null" >
+        goodname = #{record.goodname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodnum != null" >
+        goodnum = #{record.goodnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodprice != null" >
+        goodprice = #{record.goodprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.goodtiji != null" >
+        goodtiji = #{record.goodtiji,jdbcType=REAL},
+      </if>
+      <if test="record.goodzhongliang != null" >
+        goodzhongliang = #{record.goodzhongliang,jdbcType=REAL},
+      </if>
+      <if test="record.goodmiaoshu != null" >
+        goodmiaoshu = #{record.goodmiaoshu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update good
+    set goodid = #{record.goodid,jdbcType=INTEGER},
+      deliveryreceiptid = #{record.deliveryreceiptid,jdbcType=INTEGER},
+      orderlistid = #{record.orderlistid,jdbcType=INTEGER},
+      goodname = #{record.goodname,jdbcType=VARCHAR},
+      goodnum = #{record.goodnum,jdbcType=INTEGER},
+      goodprice = #{record.goodprice,jdbcType=DECIMAL},
+      goodtiji = #{record.goodtiji,jdbcType=REAL},
+      goodzhongliang = #{record.goodzhongliang,jdbcType=REAL},
+      goodmiaoshu = #{record.goodmiaoshu,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wuliu.pojo.Good" >
+    update good
+    <set >
+      <if test="deliveryreceiptid != null" >
+        deliveryreceiptid = #{deliveryreceiptid,jdbcType=INTEGER},
+      </if>
+      <if test="orderlistid != null" >
+        orderlistid = #{orderlistid,jdbcType=INTEGER},
+      </if>
+      <if test="goodname != null" >
+        goodname = #{goodname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodnum != null" >
+        goodnum = #{goodnum,jdbcType=INTEGER},
+      </if>
+      <if test="goodprice != null" >
+        goodprice = #{goodprice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodtiji != null" >
+        goodtiji = #{goodtiji,jdbcType=REAL},
+      </if>
+      <if test="goodzhongliang != null" >
+        goodzhongliang = #{goodzhongliang,jdbcType=REAL},
+      </if>
+      <if test="goodmiaoshu != null" >
+        goodmiaoshu = #{goodmiaoshu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where goodid = #{goodid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wuliu.pojo.Good" >
+    update good
+    set deliveryreceiptid = #{deliveryreceiptid,jdbcType=INTEGER},
+      orderlistid = #{orderlistid,jdbcType=INTEGER},
+      goodname = #{goodname,jdbcType=VARCHAR},
+      goodnum = #{goodnum,jdbcType=INTEGER},
+      goodprice = #{goodprice,jdbcType=DECIMAL},
+      goodtiji = #{goodtiji,jdbcType=REAL},
+      goodzhongliang = #{goodzhongliang,jdbcType=REAL},
+      goodmiaoshu = #{goodmiaoshu,jdbcType=VARCHAR}
+    where goodid = #{goodid,jdbcType=INTEGER}
+  </update>
+</mapper>

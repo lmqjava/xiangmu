@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuliu.mapper.RunpriceMapper" >
+  <resultMap id="BaseResultMap" type="com.wuliu.pojo.Runprice" >
+    <id column="runpriceid" property="runpriceid" jdbcType="INTEGER" />
+    <result column="fhadd" property="fhadd" jdbcType="VARCHAR" />
+    <result column="shadd" property="shadd" jdbcType="VARCHAR" />
+    <result column="firstprice" property="firstprice" jdbcType="DECIMAL" />
+    <result column="cgjprice" property="cgjprice" jdbcType="DECIMAL" />
+    <result column="stjprice" property="stjprice" jdbcType="DECIMAL" />
+    <result column="ctjprice" property="ctjprice" jdbcType="DECIMAL" />
+    <result column="sslxn" property="sslxn" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    runpriceid, fhadd, shadd, firstprice, cgjprice, stjprice, ctjprice, sslxn
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wuliu.pojo.RunpriceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from runprice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from runprice
+    where runpriceid = #{runpriceid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from runprice
+    where runpriceid = #{runpriceid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wuliu.pojo.RunpriceExample" >
+    delete from runprice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wuliu.pojo.Runprice" >
+    insert into runprice (runpriceid, fhadd, shadd, 
+      firstprice, cgjprice, stjprice, 
+      ctjprice, sslxn)
+    values (#{runpriceid,jdbcType=INTEGER}, #{fhadd,jdbcType=VARCHAR}, #{shadd,jdbcType=VARCHAR}, 
+      #{firstprice,jdbcType=DECIMAL}, #{cgjprice,jdbcType=DECIMAL}, #{stjprice,jdbcType=DECIMAL}, 
+      #{ctjprice,jdbcType=DECIMAL}, #{sslxn,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wuliu.pojo.Runprice" >
+    insert into runprice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="runpriceid != null" >
+        runpriceid,
+      </if>
+      <if test="fhadd != null" >
+        fhadd,
+      </if>
+      <if test="shadd != null" >
+        shadd,
+      </if>
+      <if test="firstprice != null" >
+        firstprice,
+      </if>
+      <if test="cgjprice != null" >
+        cgjprice,
+      </if>
+      <if test="stjprice != null" >
+        stjprice,
+      </if>
+      <if test="ctjprice != null" >
+        ctjprice,
+      </if>
+      <if test="sslxn != null" >
+        sslxn,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="runpriceid != null" >
+        #{runpriceid,jdbcType=INTEGER},
+      </if>
+      <if test="fhadd != null" >
+        #{fhadd,jdbcType=VARCHAR},
+      </if>
+      <if test="shadd != null" >
+        #{shadd,jdbcType=VARCHAR},
+      </if>
+      <if test="firstprice != null" >
+        #{firstprice,jdbcType=DECIMAL},
+      </if>
+      <if test="cgjprice != null" >
+        #{cgjprice,jdbcType=DECIMAL},
+      </if>
+      <if test="stjprice != null" >
+        #{stjprice,jdbcType=DECIMAL},
+      </if>
+      <if test="ctjprice != null" >
+        #{ctjprice,jdbcType=DECIMAL},
+      </if>
+      <if test="sslxn != null" >
+        #{sslxn,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wuliu.pojo.RunpriceExample" resultType="java.lang.Integer" >
+    select count(*) from runprice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update runprice
+    <set >
+      <if test="record.runpriceid != null" >
+        runpriceid = #{record.runpriceid,jdbcType=INTEGER},
+      </if>
+      <if test="record.fhadd != null" >
+        fhadd = #{record.fhadd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shadd != null" >
+        shadd = #{record.shadd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstprice != null" >
+        firstprice = #{record.firstprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.cgjprice != null" >
+        cgjprice = #{record.cgjprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.stjprice != null" >
+        stjprice = #{record.stjprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.ctjprice != null" >
+        ctjprice = #{record.ctjprice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sslxn != null" >
+        sslxn = #{record.sslxn,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update runprice
+    set runpriceid = #{record.runpriceid,jdbcType=INTEGER},
+      fhadd = #{record.fhadd,jdbcType=VARCHAR},
+      shadd = #{record.shadd,jdbcType=VARCHAR},
+      firstprice = #{record.firstprice,jdbcType=DECIMAL},
+      cgjprice = #{record.cgjprice,jdbcType=DECIMAL},
+      stjprice = #{record.stjprice,jdbcType=DECIMAL},
+      ctjprice = #{record.ctjprice,jdbcType=DECIMAL},
+      sslxn = #{record.sslxn,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wuliu.pojo.Runprice" >
+    update runprice
+    <set >
+      <if test="fhadd != null" >
+        fhadd = #{fhadd,jdbcType=VARCHAR},
+      </if>
+      <if test="shadd != null" >
+        shadd = #{shadd,jdbcType=VARCHAR},
+      </if>
+      <if test="firstprice != null" >
+        firstprice = #{firstprice,jdbcType=DECIMAL},
+      </if>
+      <if test="cgjprice != null" >
+        cgjprice = #{cgjprice,jdbcType=DECIMAL},
+      </if>
+      <if test="stjprice != null" >
+        stjprice = #{stjprice,jdbcType=DECIMAL},
+      </if>
+      <if test="ctjprice != null" >
+        ctjprice = #{ctjprice,jdbcType=DECIMAL},
+      </if>
+      <if test="sslxn != null" >
+        sslxn = #{sslxn,jdbcType=INTEGER},
+      </if>
+    </set>
+    where runpriceid = #{runpriceid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wuliu.pojo.Runprice" >
+    update runprice
+    set fhadd = #{fhadd,jdbcType=VARCHAR},
+      shadd = #{shadd,jdbcType=VARCHAR},
+      firstprice = #{firstprice,jdbcType=DECIMAL},
+      cgjprice = #{cgjprice,jdbcType=DECIMAL},
+      stjprice = #{stjprice,jdbcType=DECIMAL},
+      ctjprice = #{ctjprice,jdbcType=DECIMAL},
+      sslxn = #{sslxn,jdbcType=INTEGER}
+    where runpriceid = #{runpriceid,jdbcType=INTEGER}
+  </update>
+</mapper>

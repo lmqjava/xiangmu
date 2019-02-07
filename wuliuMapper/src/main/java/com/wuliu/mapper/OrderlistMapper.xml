@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuliu.mapper.OrderlistMapper" >
+  <resultMap id="BaseResultMap" type="com.wuliu.pojo.Orderlist" >
+    <id column="orderlistid" property="orderlistid" jdbcType="INTEGER" />
+    <result column="clientid" property="clientid" jdbcType="INTEGER" />
+    <result column="orderliststatus" property="orderliststatus" jdbcType="VARCHAR" />
+    <result column="startstationid" property="startstationid" jdbcType="VARCHAR" />
+    <result column="endstationid" property="endstationid" jdbcType="VARCHAR" />
+    <result column="orderlistweight" property="orderlistweight" jdbcType="REAL" />
+    <result column="orderlistvolume" property="orderlistvolume" jdbcType="REAL" />
+    <result column="orderlistdeliverprice" property="orderlistdeliverprice" jdbcType="REAL" />
+    <result column="orderlistdispatchprice" property="orderlistdispatchprice" jdbcType="REAL" />
+    <result column="orderlistassuretprice" property="orderlistassuretprice" jdbcType="REAL" />
+    <result column="OrderlistAssureValue" property="orderlistassurevalue" jdbcType="REAL" />
+    <result column="OrderlistAssurePrice" property="orderlistassureprice" jdbcType="REAL" />
+    <result column="OrderlistDate" property="orderlistdate" jdbcType="DATE" />
+    <result column="OrderlistReceiverName" property="orderlistreceivername" jdbcType="VARCHAR" />
+    <result column="OrderlistReceiverPhone" property="orderlistreceiverphone" jdbcType="VARCHAR" />
+    <result column="OrderlistReceiverMobil" property="orderlistreceivermobil" jdbcType="VARCHAR" />
+    <result column="OrderlistReceiverAddress" property="orderlistreceiveraddress" jdbcType="VARCHAR" />
+    <result column="OrderlistReceiverPostC" property="orderlistreceiverpostc" jdbcType="VARCHAR" />
+    <result column="OrderlistSenderName" property="orderlistsendername" jdbcType="VARCHAR" />
+    <result column="OrderlistSenderFax" property="orderlistsenderfax" jdbcType="VARCHAR" />
+    <result column="OrderlistSenderPostCode" property="orderlistsenderpostcode" jdbcType="VARCHAR" />
+    <result column="OrderlistSenderPhone" property="orderlistsenderphone" jdbcType="VARCHAR" />
+    <result column="OrderlistSenderEmail" property="orderlistsenderemail" jdbcType="VARCHAR" />
+    <result column="OrderRequestDate" property="orderrequestdate" jdbcType="DATE" />
+    <result column="OrderlistRemark" property="orderlistremark" jdbcType="VARCHAR" />
+    <result column="OrderlistIdentifyCode" property="orderlistidentifycode" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    orderlistid, clientid, orderliststatus, startstationid, endstationid, orderlistweight, 
+    orderlistvolume, orderlistdeliverprice, orderlistdispatchprice, orderlistassuretprice, 
+    OrderlistAssureValue, OrderlistAssurePrice, OrderlistDate, OrderlistReceiverName, 
+    OrderlistReceiverPhone, OrderlistReceiverMobil, OrderlistReceiverAddress, OrderlistReceiverPostC, 
+    OrderlistSenderName, OrderlistSenderFax, OrderlistSenderPostCode, OrderlistSenderPhone, 
+    OrderlistSenderEmail, OrderRequestDate, OrderlistRemark, OrderlistIdentifyCode
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wuliu.pojo.OrderlistExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from orderlist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orderlist
+    where orderlistid = #{orderlistid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orderlist
+    where orderlistid = #{orderlistid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wuliu.pojo.OrderlistExample" >
+    delete from orderlist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wuliu.pojo.Orderlist" >
+    insert into orderlist (orderlistid, clientid, orderliststatus, 
+      startstationid, endstationid, orderlistweight, 
+      orderlistvolume, orderlistdeliverprice, orderlistdispatchprice, 
+      orderlistassuretprice, OrderlistAssureValue, 
+      OrderlistAssurePrice, OrderlistDate, OrderlistReceiverName, 
+      OrderlistReceiverPhone, OrderlistReceiverMobil, 
+      OrderlistReceiverAddress, OrderlistReceiverPostC, 
+      OrderlistSenderName, OrderlistSenderFax, 
+      OrderlistSenderPostCode, OrderlistSenderPhone, 
+      OrderlistSenderEmail, OrderRequestDate, OrderlistRemark, 
+      OrderlistIdentifyCode)
+    values (#{orderlistid,jdbcType=INTEGER}, #{clientid,jdbcType=INTEGER}, #{orderliststatus,jdbcType=VARCHAR}, 
+      #{startstationid,jdbcType=VARCHAR}, #{endstationid,jdbcType=VARCHAR}, #{orderlistweight,jdbcType=REAL}, 
+      #{orderlistvolume,jdbcType=REAL}, #{orderlistdeliverprice,jdbcType=REAL}, #{orderlistdispatchprice,jdbcType=REAL}, 
+      #{orderlistassuretprice,jdbcType=REAL}, #{orderlistassurevalue,jdbcType=REAL}, 
+      #{orderlistassureprice,jdbcType=REAL}, #{orderlistdate,jdbcType=DATE}, #{orderlistreceivername,jdbcType=VARCHAR}, 
+      #{orderlistreceiverphone,jdbcType=VARCHAR}, #{orderlistreceivermobil,jdbcType=VARCHAR}, 
+      #{orderlistreceiveraddress,jdbcType=VARCHAR}, #{orderlistreceiverpostc,jdbcType=VARCHAR}, 
+      #{orderlistsendername,jdbcType=VARCHAR}, #{orderlistsenderfax,jdbcType=VARCHAR}, 
+      #{orderlistsenderpostcode,jdbcType=VARCHAR}, #{orderlistsenderphone,jdbcType=VARCHAR}, 
+      #{orderlistsenderemail,jdbcType=VARCHAR}, #{orderrequestdate,jdbcType=DATE}, #{orderlistremark,jdbcType=VARCHAR}, 
+      #{orderlistidentifycode,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wuliu.pojo.Orderlist" >
+    insert into orderlist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderlistid != null" >
+        orderlistid,
+      </if>
+      <if test="clientid != null" >
+        clientid,
+      </if>
+      <if test="orderliststatus != null" >
+        orderliststatus,
+      </if>
+      <if test="startstationid != null" >
+        startstationid,
+      </if>
+      <if test="endstationid != null" >
+        endstationid,
+      </if>
+      <if test="orderlistweight != null" >
+        orderlistweight,
+      </if>
+      <if test="orderlistvolume != null" >
+        orderlistvolume,
+      </if>
+      <if test="orderlistdeliverprice != null" >
+        orderlistdeliverprice,
+      </if>
+      <if test="orderlistdispatchprice != null" >
+        orderlistdispatchprice,
+      </if>
+      <if test="orderlistassuretprice != null" >
+        orderlistassuretprice,
+      </if>
+      <if test="orderlistassurevalue != null" >
+        OrderlistAssureValue,
+      </if>
+      <if test="orderlistassureprice != null" >
+        OrderlistAssurePrice,
+      </if>
+      <if test="orderlistdate != null" >
+        OrderlistDate,
+      </if>
+      <if test="orderlistreceivername != null" >
+        OrderlistReceiverName,
+      </if>
+      <if test="orderlistreceiverphone != null" >
+        OrderlistReceiverPhone,
+      </if>
+      <if test="orderlistreceivermobil != null" >
+        OrderlistReceiverMobil,
+      </if>
+      <if test="orderlistreceiveraddress != null" >
+        OrderlistReceiverAddress,
+      </if>
+      <if test="orderlistreceiverpostc != null" >
+        OrderlistReceiverPostC,
+      </if>
+      <if test="orderlistsendername != null" >
+        OrderlistSenderName,
+      </if>
+      <if test="orderlistsenderfax != null" >
+        OrderlistSenderFax,
+      </if>
+      <if test="orderlistsenderpostcode != null" >
+        OrderlistSenderPostCode,
+      </if>
+      <if test="orderlistsenderphone != null" >
+        OrderlistSenderPhone,
+      </if>
+      <if test="orderlistsenderemail != null" >
+        OrderlistSenderEmail,
+      </if>
+      <if test="orderrequestdate != null" >
+        OrderRequestDate,
+      </if>
+      <if test="orderlistremark != null" >
+        OrderlistRemark,
+      </if>
+      <if test="orderlistidentifycode != null" >
+        OrderlistIdentifyCode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderlistid != null" >
+        #{orderlistid,jdbcType=INTEGER},
+      </if>
+      <if test="clientid != null" >
+        #{clientid,jdbcType=INTEGER},
+      </if>
+      <if test="orderliststatus != null" >
+        #{orderliststatus,jdbcType=VARCHAR},
+      </if>
+      <if test="startstationid != null" >
+        #{startstationid,jdbcType=VARCHAR},
+      </if>
+      <if test="endstationid != null" >
+        #{endstationid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistweight != null" >
+        #{orderlistweight,jdbcType=REAL},
+      </if>
+      <if test="orderlistvolume != null" >
+        #{orderlistvolume,jdbcType=REAL},
+      </if>
+      <if test="orderlistdeliverprice != null" >
+        #{orderlistdeliverprice,jdbcType=REAL},
+      </if>
+      <if test="orderlistdispatchprice != null" >
+        #{orderlistdispatchprice,jdbcType=REAL},
+      </if>
+      <if test="orderlistassuretprice != null" >
+        #{orderlistassuretprice,jdbcType=REAL},
+      </if>
+      <if test="orderlistassurevalue != null" >
+        #{orderlistassurevalue,jdbcType=REAL},
+      </if>
+      <if test="orderlistassureprice != null" >
+        #{orderlistassureprice,jdbcType=REAL},
+      </if>
+      <if test="orderlistdate != null" >
+        #{orderlistdate,jdbcType=DATE},
+      </if>
+      <if test="orderlistreceivername != null" >
+        #{orderlistreceivername,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistreceiverphone != null" >
+        #{orderlistreceiverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistreceivermobil != null" >
+        #{orderlistreceivermobil,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistreceiveraddress != null" >
+        #{orderlistreceiveraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistreceiverpostc != null" >
+        #{orderlistreceiverpostc,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistsendername != null" >
+        #{orderlistsendername,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistsenderfax != null" >
+        #{orderlistsenderfax,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistsenderpostcode != null" >
+        #{orderlistsenderpostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistsenderphone != null" >
+        #{orderlistsenderphone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistsenderemail != null" >
+        #{orderlistsenderemail,jdbcType=VARCHAR},
+      </if>
+      <if test="orderrequestdate != null" >
+        #{orderrequestdate,jdbcType=DATE},
+      </if>
+      <if test="orderlistremark != null" >
+        #{orderlistremark,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistidentifycode != null" >
+        #{orderlistidentifycode,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wuliu.pojo.OrderlistExample" resultType="java.lang.Integer" >
+    select count(*) from orderlist
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update orderlist
+    <set >
+      <if test="record.orderlistid != null" >
+        orderlistid = #{record.orderlistid,jdbcType=INTEGER},
+      </if>
+      <if test="record.clientid != null" >
+        clientid = #{record.clientid,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderliststatus != null" >
+        orderliststatus = #{record.orderliststatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.startstationid != null" >
+        startstationid = #{record.startstationid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endstationid != null" >
+        endstationid = #{record.endstationid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderlistweight != null" >
+        orderlistweight = #{record.orderlistweight,jdbcType=REAL},
+      </if>
+      <if test="record.orderlistvolume != null" >
+        orderlistvolume = #{record.orderlistvolume,jdbcType=REAL},
+      </if>
+      <if test="record.orderlistdeliverprice != null" >
+        orderlistdeliverprice = #{record.orderlistdeliverprice,jdbcType=REAL},
+      </if>
+      <if test="record.orderlistdispatchprice != null" >
+        orderlistdispatchprice = #{record.orderlistdispatchprice,jdbcType=REAL},
+      </if>
+      <if test="record.orderlistassuretprice != null" >
+        orderlistassuretprice = #{record.orderlistassuretprice,jdbcType=REAL},
+      </if>
+      <if test="record.orderlistassurevalue != null" >
+        OrderlistAssureValue = #{record.orderlistassurevalue,jdbcType=REAL},
+      </if>
+      <if test="record.orderlistassureprice != null" >
+        OrderlistAssurePrice = #{record.orderlistassureprice,jdbcType=REAL},
+      </if>
+      <if test="record.orderlistdate != null" >
+        OrderlistDate = #{record.orderlistdate,jdbcType=DATE},
+      </if>
+      <if test="record.orderlistreceivername != null" >
+        OrderlistReceiverName = #{record.orderlistreceivername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderlistreceiverphone != null" >
+        OrderlistReceiverPhone = #{record.orderlistreceiverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderlistreceivermobil != null" >
+        OrderlistReceiverMobil = #{record.orderlistreceivermobil,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderlistreceiveraddress != null" >
+        OrderlistReceiverAddress = #{record.orderlistreceiveraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderlistreceiverpostc != null" >
+        OrderlistReceiverPostC = #{record.orderlistreceiverpostc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderlistsendername != null" >
+        OrderlistSenderName = #{record.orderlistsendername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderlistsenderfax != null" >
+        OrderlistSenderFax = #{record.orderlistsenderfax,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderlistsenderpostcode != null" >
+        OrderlistSenderPostCode = #{record.orderlistsenderpostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderlistsenderphone != null" >
+        OrderlistSenderPhone = #{record.orderlistsenderphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderlistsenderemail != null" >
+        OrderlistSenderEmail = #{record.orderlistsenderemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderrequestdate != null" >
+        OrderRequestDate = #{record.orderrequestdate,jdbcType=DATE},
+      </if>
+      <if test="record.orderlistremark != null" >
+        OrderlistRemark = #{record.orderlistremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderlistidentifycode != null" >
+        OrderlistIdentifyCode = #{record.orderlistidentifycode,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update orderlist
+    set orderlistid = #{record.orderlistid,jdbcType=INTEGER},
+      clientid = #{record.clientid,jdbcType=INTEGER},
+      orderliststatus = #{record.orderliststatus,jdbcType=VARCHAR},
+      startstationid = #{record.startstationid,jdbcType=VARCHAR},
+      endstationid = #{record.endstationid,jdbcType=VARCHAR},
+      orderlistweight = #{record.orderlistweight,jdbcType=REAL},
+      orderlistvolume = #{record.orderlistvolume,jdbcType=REAL},
+      orderlistdeliverprice = #{record.orderlistdeliverprice,jdbcType=REAL},
+      orderlistdispatchprice = #{record.orderlistdispatchprice,jdbcType=REAL},
+      orderlistassuretprice = #{record.orderlistassuretprice,jdbcType=REAL},
+      OrderlistAssureValue = #{record.orderlistassurevalue,jdbcType=REAL},
+      OrderlistAssurePrice = #{record.orderlistassureprice,jdbcType=REAL},
+      OrderlistDate = #{record.orderlistdate,jdbcType=DATE},
+      OrderlistReceiverName = #{record.orderlistreceivername,jdbcType=VARCHAR},
+      OrderlistReceiverPhone = #{record.orderlistreceiverphone,jdbcType=VARCHAR},
+      OrderlistReceiverMobil = #{record.orderlistreceivermobil,jdbcType=VARCHAR},
+      OrderlistReceiverAddress = #{record.orderlistreceiveraddress,jdbcType=VARCHAR},
+      OrderlistReceiverPostC = #{record.orderlistreceiverpostc,jdbcType=VARCHAR},
+      OrderlistSenderName = #{record.orderlistsendername,jdbcType=VARCHAR},
+      OrderlistSenderFax = #{record.orderlistsenderfax,jdbcType=VARCHAR},
+      OrderlistSenderPostCode = #{record.orderlistsenderpostcode,jdbcType=VARCHAR},
+      OrderlistSenderPhone = #{record.orderlistsenderphone,jdbcType=VARCHAR},
+      OrderlistSenderEmail = #{record.orderlistsenderemail,jdbcType=VARCHAR},
+      OrderRequestDate = #{record.orderrequestdate,jdbcType=DATE},
+      OrderlistRemark = #{record.orderlistremark,jdbcType=VARCHAR},
+      OrderlistIdentifyCode = #{record.orderlistidentifycode,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wuliu.pojo.Orderlist" >
+    update orderlist
+    <set >
+      <if test="clientid != null" >
+        clientid = #{clientid,jdbcType=INTEGER},
+      </if>
+      <if test="orderliststatus != null" >
+        orderliststatus = #{orderliststatus,jdbcType=VARCHAR},
+      </if>
+      <if test="startstationid != null" >
+        startstationid = #{startstationid,jdbcType=VARCHAR},
+      </if>
+      <if test="endstationid != null" >
+        endstationid = #{endstationid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistweight != null" >
+        orderlistweight = #{orderlistweight,jdbcType=REAL},
+      </if>
+      <if test="orderlistvolume != null" >
+        orderlistvolume = #{orderlistvolume,jdbcType=REAL},
+      </if>
+      <if test="orderlistdeliverprice != null" >
+        orderlistdeliverprice = #{orderlistdeliverprice,jdbcType=REAL},
+      </if>
+      <if test="orderlistdispatchprice != null" >
+        orderlistdispatchprice = #{orderlistdispatchprice,jdbcType=REAL},
+      </if>
+      <if test="orderlistassuretprice != null" >
+        orderlistassuretprice = #{orderlistassuretprice,jdbcType=REAL},
+      </if>
+      <if test="orderlistassurevalue != null" >
+        OrderlistAssureValue = #{orderlistassurevalue,jdbcType=REAL},
+      </if>
+      <if test="orderlistassureprice != null" >
+        OrderlistAssurePrice = #{orderlistassureprice,jdbcType=REAL},
+      </if>
+      <if test="orderlistdate != null" >
+        OrderlistDate = #{orderlistdate,jdbcType=DATE},
+      </if>
+      <if test="orderlistreceivername != null" >
+        OrderlistReceiverName = #{orderlistreceivername,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistreceiverphone != null" >
+        OrderlistReceiverPhone = #{orderlistreceiverphone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistreceivermobil != null" >
+        OrderlistReceiverMobil = #{orderlistreceivermobil,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistreceiveraddress != null" >
+        OrderlistReceiverAddress = #{orderlistreceiveraddress,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistreceiverpostc != null" >
+        OrderlistReceiverPostC = #{orderlistreceiverpostc,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistsendername != null" >
+        OrderlistSenderName = #{orderlistsendername,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistsenderfax != null" >
+        OrderlistSenderFax = #{orderlistsenderfax,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistsenderpostcode != null" >
+        OrderlistSenderPostCode = #{orderlistsenderpostcode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistsenderphone != null" >
+        OrderlistSenderPhone = #{orderlistsenderphone,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistsenderemail != null" >
+        OrderlistSenderEmail = #{orderlistsenderemail,jdbcType=VARCHAR},
+      </if>
+      <if test="orderrequestdate != null" >
+        OrderRequestDate = #{orderrequestdate,jdbcType=DATE},
+      </if>
+      <if test="orderlistremark != null" >
+        OrderlistRemark = #{orderlistremark,jdbcType=VARCHAR},
+      </if>
+      <if test="orderlistidentifycode != null" >
+        OrderlistIdentifyCode = #{orderlistidentifycode,jdbcType=INTEGER},
+      </if>
+    </set>
+    where orderlistid = #{orderlistid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wuliu.pojo.Orderlist" >
+    update orderlist
+    set clientid = #{clientid,jdbcType=INTEGER},
+      orderliststatus = #{orderliststatus,jdbcType=VARCHAR},
+      startstationid = #{startstationid,jdbcType=VARCHAR},
+      endstationid = #{endstationid,jdbcType=VARCHAR},
+      orderlistweight = #{orderlistweight,jdbcType=REAL},
+      orderlistvolume = #{orderlistvolume,jdbcType=REAL},
+      orderlistdeliverprice = #{orderlistdeliverprice,jdbcType=REAL},
+      orderlistdispatchprice = #{orderlistdispatchprice,jdbcType=REAL},
+      orderlistassuretprice = #{orderlistassuretprice,jdbcType=REAL},
+      OrderlistAssureValue = #{orderlistassurevalue,jdbcType=REAL},
+      OrderlistAssurePrice = #{orderlistassureprice,jdbcType=REAL},
+      OrderlistDate = #{orderlistdate,jdbcType=DATE},
+      OrderlistReceiverName = #{orderlistreceivername,jdbcType=VARCHAR},
+      OrderlistReceiverPhone = #{orderlistreceiverphone,jdbcType=VARCHAR},
+      OrderlistReceiverMobil = #{orderlistreceivermobil,jdbcType=VARCHAR},
+      OrderlistReceiverAddress = #{orderlistreceiveraddress,jdbcType=VARCHAR},
+      OrderlistReceiverPostC = #{orderlistreceiverpostc,jdbcType=VARCHAR},
+      OrderlistSenderName = #{orderlistsendername,jdbcType=VARCHAR},
+      OrderlistSenderFax = #{orderlistsenderfax,jdbcType=VARCHAR},
+      OrderlistSenderPostCode = #{orderlistsenderpostcode,jdbcType=VARCHAR},
+      OrderlistSenderPhone = #{orderlistsenderphone,jdbcType=VARCHAR},
+      OrderlistSenderEmail = #{orderlistsenderemail,jdbcType=VARCHAR},
+      OrderRequestDate = #{orderrequestdate,jdbcType=DATE},
+      OrderlistRemark = #{orderlistremark,jdbcType=VARCHAR},
+      OrderlistIdentifyCode = #{orderlistidentifycode,jdbcType=INTEGER}
+    where orderlistid = #{orderlistid,jdbcType=INTEGER}
+  </update>
+</mapper>

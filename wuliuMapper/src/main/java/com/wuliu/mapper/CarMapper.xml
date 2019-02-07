@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuliu.mapper.CarMapper" >
+  <resultMap id="BaseResultMap" type="com.wuliu.pojo.Car" >
+    <id column="carid" property="carid" jdbcType="INTEGER" />
+    <result column="carnum" property="carnum" jdbcType="VARCHAR" />
+    <result column="carrunnum" property="carrunnum" jdbcType="VARCHAR" />
+    <result column="cartype" property="cartype" jdbcType="VARCHAR" />
+    <result column="cartun" property="cartun" jdbcType="REAL" />
+    <result column="carbox" property="carbox" jdbcType="CHAR" />
+    <result column="carrii" property="carrii" jdbcType="REAL" />
+    <result column="cartime" property="cartime" jdbcType="DATE" />
+    <result column="timesc" property="timesc" jdbcType="DATE" />
+    <result column="carzt" property="carzt" jdbcType="VARCHAR" />
+    <result column="pinpai" property="pinpai" jdbcType="VARCHAR" />
+    <result column="fzyuangong" property="fzyuangong" jdbcType="VARCHAR" />
+    <result column="careunpath" property="careunpath" jdbcType="VARCHAR" />
+    <result column="carsay" property="carsay" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    carid, carnum, carrunnum, cartype, cartun, carbox, carrii, cartime, timesc, carzt, 
+    pinpai, fzyuangong, careunpath, carsay
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wuliu.pojo.CarExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from car
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from car
+    where carid = #{carid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from car
+    where carid = #{carid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wuliu.pojo.CarExample" >
+    delete from car
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wuliu.pojo.Car" >
+    insert into car (carid, carnum, carrunnum, 
+      cartype, cartun, carbox, 
+      carrii, cartime, timesc, carzt, 
+      pinpai, fzyuangong, careunpath, 
+      carsay)
+    values (#{carid,jdbcType=INTEGER}, #{carnum,jdbcType=VARCHAR}, #{carrunnum,jdbcType=VARCHAR}, 
+      #{cartype,jdbcType=VARCHAR}, #{cartun,jdbcType=REAL}, #{carbox,jdbcType=CHAR}, 
+      #{carrii,jdbcType=REAL}, #{cartime,jdbcType=DATE}, #{timesc,jdbcType=DATE}, #{carzt,jdbcType=VARCHAR}, 
+      #{pinpai,jdbcType=VARCHAR}, #{fzyuangong,jdbcType=VARCHAR}, #{careunpath,jdbcType=VARCHAR}, 
+      #{carsay,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wuliu.pojo.Car" >
+    insert into car
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="carid != null" >
+        carid,
+      </if>
+      <if test="carnum != null" >
+        carnum,
+      </if>
+      <if test="carrunnum != null" >
+        carrunnum,
+      </if>
+      <if test="cartype != null" >
+        cartype,
+      </if>
+      <if test="cartun != null" >
+        cartun,
+      </if>
+      <if test="carbox != null" >
+        carbox,
+      </if>
+      <if test="carrii != null" >
+        carrii,
+      </if>
+      <if test="cartime != null" >
+        cartime,
+      </if>
+      <if test="timesc != null" >
+        timesc,
+      </if>
+      <if test="carzt != null" >
+        carzt,
+      </if>
+      <if test="pinpai != null" >
+        pinpai,
+      </if>
+      <if test="fzyuangong != null" >
+        fzyuangong,
+      </if>
+      <if test="careunpath != null" >
+        careunpath,
+      </if>
+      <if test="carsay != null" >
+        carsay,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="carid != null" >
+        #{carid,jdbcType=INTEGER},
+      </if>
+      <if test="carnum != null" >
+        #{carnum,jdbcType=VARCHAR},
+      </if>
+      <if test="carrunnum != null" >
+        #{carrunnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cartype != null" >
+        #{cartype,jdbcType=VARCHAR},
+      </if>
+      <if test="cartun != null" >
+        #{cartun,jdbcType=REAL},
+      </if>
+      <if test="carbox != null" >
+        #{carbox,jdbcType=CHAR},
+      </if>
+      <if test="carrii != null" >
+        #{carrii,jdbcType=REAL},
+      </if>
+      <if test="cartime != null" >
+        #{cartime,jdbcType=DATE},
+      </if>
+      <if test="timesc != null" >
+        #{timesc,jdbcType=DATE},
+      </if>
+      <if test="carzt != null" >
+        #{carzt,jdbcType=VARCHAR},
+      </if>
+      <if test="pinpai != null" >
+        #{pinpai,jdbcType=VARCHAR},
+      </if>
+      <if test="fzyuangong != null" >
+        #{fzyuangong,jdbcType=VARCHAR},
+      </if>
+      <if test="careunpath != null" >
+        #{careunpath,jdbcType=VARCHAR},
+      </if>
+      <if test="carsay != null" >
+        #{carsay,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wuliu.pojo.CarExample" resultType="java.lang.Integer" >
+    select count(*) from car
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update car
+    <set >
+      <if test="record.carid != null" >
+        carid = #{record.carid,jdbcType=INTEGER},
+      </if>
+      <if test="record.carnum != null" >
+        carnum = #{record.carnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carrunnum != null" >
+        carrunnum = #{record.carrunnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cartype != null" >
+        cartype = #{record.cartype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cartun != null" >
+        cartun = #{record.cartun,jdbcType=REAL},
+      </if>
+      <if test="record.carbox != null" >
+        carbox = #{record.carbox,jdbcType=CHAR},
+      </if>
+      <if test="record.carrii != null" >
+        carrii = #{record.carrii,jdbcType=REAL},
+      </if>
+      <if test="record.cartime != null" >
+        cartime = #{record.cartime,jdbcType=DATE},
+      </if>
+      <if test="record.timesc != null" >
+        timesc = #{record.timesc,jdbcType=DATE},
+      </if>
+      <if test="record.carzt != null" >
+        carzt = #{record.carzt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pinpai != null" >
+        pinpai = #{record.pinpai,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fzyuangong != null" >
+        fzyuangong = #{record.fzyuangong,jdbcType=VARCHAR},
+      </if>
+      <if test="record.careunpath != null" >
+        careunpath = #{record.careunpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carsay != null" >
+        carsay = #{record.carsay,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update car
+    set carid = #{record.carid,jdbcType=INTEGER},
+      carnum = #{record.carnum,jdbcType=VARCHAR},
+      carrunnum = #{record.carrunnum,jdbcType=VARCHAR},
+      cartype = #{record.cartype,jdbcType=VARCHAR},
+      cartun = #{record.cartun,jdbcType=REAL},
+      carbox = #{record.carbox,jdbcType=CHAR},
+      carrii = #{record.carrii,jdbcType=REAL},
+      cartime = #{record.cartime,jdbcType=DATE},
+      timesc = #{record.timesc,jdbcType=DATE},
+      carzt = #{record.carzt,jdbcType=VARCHAR},
+      pinpai = #{record.pinpai,jdbcType=VARCHAR},
+      fzyuangong = #{record.fzyuangong,jdbcType=VARCHAR},
+      careunpath = #{record.careunpath,jdbcType=VARCHAR},
+      carsay = #{record.carsay,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wuliu.pojo.Car" >
+    update car
+    <set >
+      <if test="carnum != null" >
+        carnum = #{carnum,jdbcType=VARCHAR},
+      </if>
+      <if test="carrunnum != null" >
+        carrunnum = #{carrunnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cartype != null" >
+        cartype = #{cartype,jdbcType=VARCHAR},
+      </if>
+      <if test="cartun != null" >
+        cartun = #{cartun,jdbcType=REAL},
+      </if>
+      <if test="carbox != null" >
+        carbox = #{carbox,jdbcType=CHAR},
+      </if>
+      <if test="carrii != null" >
+        carrii = #{carrii,jdbcType=REAL},
+      </if>
+      <if test="cartime != null" >
+        cartime = #{cartime,jdbcType=DATE},
+      </if>
+      <if test="timesc != null" >
+        timesc = #{timesc,jdbcType=DATE},
+      </if>
+      <if test="carzt != null" >
+        carzt = #{carzt,jdbcType=VARCHAR},
+      </if>
+      <if test="pinpai != null" >
+        pinpai = #{pinpai,jdbcType=VARCHAR},
+      </if>
+      <if test="fzyuangong != null" >
+        fzyuangong = #{fzyuangong,jdbcType=VARCHAR},
+      </if>
+      <if test="careunpath != null" >
+        careunpath = #{careunpath,jdbcType=VARCHAR},
+      </if>
+      <if test="carsay != null" >
+        carsay = #{carsay,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where carid = #{carid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wuliu.pojo.Car" >
+    update car
+    set carnum = #{carnum,jdbcType=VARCHAR},
+      carrunnum = #{carrunnum,jdbcType=VARCHAR},
+      cartype = #{cartype,jdbcType=VARCHAR},
+      cartun = #{cartun,jdbcType=REAL},
+      carbox = #{carbox,jdbcType=CHAR},
+      carrii = #{carrii,jdbcType=REAL},
+      cartime = #{cartime,jdbcType=DATE},
+      timesc = #{timesc,jdbcType=DATE},
+      carzt = #{carzt,jdbcType=VARCHAR},
+      pinpai = #{pinpai,jdbcType=VARCHAR},
+      fzyuangong = #{fzyuangong,jdbcType=VARCHAR},
+      careunpath = #{careunpath,jdbcType=VARCHAR},
+      carsay = #{carsay,jdbcType=VARCHAR}
+    where carid = #{carid,jdbcType=INTEGER}
+  </update>
+</mapper>

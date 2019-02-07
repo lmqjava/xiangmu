@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuliu.mapper.PeisongdianMapper" >
+  <resultMap id="BaseResultMap" type="com.wuliu.pojo.Peisongdian" >
+    <id column="psdid" property="psdid" jdbcType="INTEGER" />
+    <result column="peisongidianname" property="peisongidianname" jdbcType="VARCHAR" />
+    <result column="shengfen" property="shengfen" jdbcType="VARCHAR" />
+    <result column="psphone" property="psphone" jdbcType="VARCHAR" />
+    <result column="psemail" property="psemail" jdbcType="VARCHAR" />
+    <result column="psxinxi" property="psxinxi" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    psdid, peisongidianname, shengfen, psphone, psemail, psxinxi
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wuliu.pojo.PeisongdianExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from peisongdian
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from peisongdian
+    where psdid = #{psdid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from peisongdian
+    where psdid = #{psdid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wuliu.pojo.PeisongdianExample" >
+    delete from peisongdian
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wuliu.pojo.Peisongdian" >
+    insert into peisongdian (psdid, peisongidianname, shengfen, 
+      psphone, psemail, psxinxi
+      )
+    values (#{psdid,jdbcType=INTEGER}, #{peisongidianname,jdbcType=VARCHAR}, #{shengfen,jdbcType=VARCHAR}, 
+      #{psphone,jdbcType=VARCHAR}, #{psemail,jdbcType=VARCHAR}, #{psxinxi,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wuliu.pojo.Peisongdian" >
+    insert into peisongdian
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="psdid != null" >
+        psdid,
+      </if>
+      <if test="peisongidianname != null" >
+        peisongidianname,
+      </if>
+      <if test="shengfen != null" >
+        shengfen,
+      </if>
+      <if test="psphone != null" >
+        psphone,
+      </if>
+      <if test="psemail != null" >
+        psemail,
+      </if>
+      <if test="psxinxi != null" >
+        psxinxi,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="psdid != null" >
+        #{psdid,jdbcType=INTEGER},
+      </if>
+      <if test="peisongidianname != null" >
+        #{peisongidianname,jdbcType=VARCHAR},
+      </if>
+      <if test="shengfen != null" >
+        #{shengfen,jdbcType=VARCHAR},
+      </if>
+      <if test="psphone != null" >
+        #{psphone,jdbcType=VARCHAR},
+      </if>
+      <if test="psemail != null" >
+        #{psemail,jdbcType=VARCHAR},
+      </if>
+      <if test="psxinxi != null" >
+        #{psxinxi,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wuliu.pojo.PeisongdianExample" resultType="java.lang.Integer" >
+    select count(*) from peisongdian
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update peisongdian
+    <set >
+      <if test="record.psdid != null" >
+        psdid = #{record.psdid,jdbcType=INTEGER},
+      </if>
+      <if test="record.peisongidianname != null" >
+        peisongidianname = #{record.peisongidianname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shengfen != null" >
+        shengfen = #{record.shengfen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.psphone != null" >
+        psphone = #{record.psphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.psemail != null" >
+        psemail = #{record.psemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.psxinxi != null" >
+        psxinxi = #{record.psxinxi,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update peisongdian
+    set psdid = #{record.psdid,jdbcType=INTEGER},
+      peisongidianname = #{record.peisongidianname,jdbcType=VARCHAR},
+      shengfen = #{record.shengfen,jdbcType=VARCHAR},
+      psphone = #{record.psphone,jdbcType=VARCHAR},
+      psemail = #{record.psemail,jdbcType=VARCHAR},
+      psxinxi = #{record.psxinxi,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wuliu.pojo.Peisongdian" >
+    update peisongdian
+    <set >
+      <if test="peisongidianname != null" >
+        peisongidianname = #{peisongidianname,jdbcType=VARCHAR},
+      </if>
+      <if test="shengfen != null" >
+        shengfen = #{shengfen,jdbcType=VARCHAR},
+      </if>
+      <if test="psphone != null" >
+        psphone = #{psphone,jdbcType=VARCHAR},
+      </if>
+      <if test="psemail != null" >
+        psemail = #{psemail,jdbcType=VARCHAR},
+      </if>
+      <if test="psxinxi != null" >
+        psxinxi = #{psxinxi,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where psdid = #{psdid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wuliu.pojo.Peisongdian" >
+    update peisongdian
+    set peisongidianname = #{peisongidianname,jdbcType=VARCHAR},
+      shengfen = #{shengfen,jdbcType=VARCHAR},
+      psphone = #{psphone,jdbcType=VARCHAR},
+      psemail = #{psemail,jdbcType=VARCHAR},
+      psxinxi = #{psxinxi,jdbcType=VARCHAR}
+    where psdid = #{psdid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuliu.mapper.PersonnelMapper" >
+  <resultMap id="BaseResultMap" type="com.wuliu.pojo.Personnel" >
+    <id column="personnelid" property="personnelid" jdbcType="INTEGER" />
+    <result column="psdid" property="psdid" jdbcType="INTEGER" />
+    <result column="personnelusername" property="personnelusername" jdbcType="VARCHAR" />
+    <result column="personnelname" property="personnelname" jdbcType="VARCHAR" />
+    <result column="personnelgender" property="personnelgender" jdbcType="VARCHAR" />
+    <result column="personnelage" property="personnelage" jdbcType="INTEGER" />
+    <result column="personneladdress" property="personneladdress" jdbcType="VARCHAR" />
+    <result column="personnelphone" property="personnelphone" jdbcType="VARCHAR" />
+    <result column="personnelmobilephone" property="personnelmobilephone" jdbcType="VARCHAR" />
+    <result column="personnelemail" property="personnelemail" jdbcType="VARCHAR" />
+    <result column="personnelpolitics" property="personnelpolitics" jdbcType="VARCHAR" />
+    <result column="personneljob" property="personneljob" jdbcType="VARCHAR" />
+    <result column="personneldepartment" property="personneldepartment" jdbcType="VARCHAR" />
+    <result column="personnelentrydate" property="personnelentrydate" jdbcType="VARCHAR" />
+    <result column="personnelsalary" property="personnelsalary" jdbcType="INTEGER" />
+    <result column="personnelstatus" property="personnelstatus" jdbcType="VARCHAR" />
+    <result column="personnelpassword" property="personnelpassword" jdbcType="VARCHAR" />
+    <result column="personnelpasswordquestion" property="personnelpasswordquestion" jdbcType="VARCHAR" />
+    <result column="personnelpasswordanswer" property="personnelpasswordanswer" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    personnelid, psdid, personnelusername, personnelname, personnelgender, personnelage, 
+    personneladdress, personnelphone, personnelmobilephone, personnelemail, personnelpolitics, 
+    personneljob, personneldepartment, personnelentrydate, personnelsalary, personnelstatus, 
+    personnelpassword, personnelpasswordquestion, personnelpasswordanswer
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wuliu.pojo.PersonnelExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from personnel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from personnel
+    where personnelid = #{personnelid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from personnel
+    where personnelid = #{personnelid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wuliu.pojo.PersonnelExample" >
+    delete from personnel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wuliu.pojo.Personnel" >
+    insert into personnel (personnelid, psdid, personnelusername, 
+      personnelname, personnelgender, personnelage, 
+      personneladdress, personnelphone, personnelmobilephone, 
+      personnelemail, personnelpolitics, personneljob, 
+      personneldepartment, personnelentrydate, 
+      personnelsalary, personnelstatus, personnelpassword, 
+      personnelpasswordquestion, personnelpasswordanswer
+      )
+    values (#{personnelid,jdbcType=INTEGER}, #{psdid,jdbcType=INTEGER}, #{personnelusername,jdbcType=VARCHAR}, 
+      #{personnelname,jdbcType=VARCHAR}, #{personnelgender,jdbcType=VARCHAR}, #{personnelage,jdbcType=INTEGER}, 
+      #{personneladdress,jdbcType=VARCHAR}, #{personnelphone,jdbcType=VARCHAR}, #{personnelmobilephone,jdbcType=VARCHAR}, 
+      #{personnelemail,jdbcType=VARCHAR}, #{personnelpolitics,jdbcType=VARCHAR}, #{personneljob,jdbcType=VARCHAR}, 
+      #{personneldepartment,jdbcType=VARCHAR}, #{personnelentrydate,jdbcType=VARCHAR}, 
+      #{personnelsalary,jdbcType=INTEGER}, #{personnelstatus,jdbcType=VARCHAR}, #{personnelpassword,jdbcType=VARCHAR}, 
+      #{personnelpasswordquestion,jdbcType=VARCHAR}, #{personnelpasswordanswer,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wuliu.pojo.Personnel" >
+    insert into personnel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="personnelid != null" >
+        personnelid,
+      </if>
+      <if test="psdid != null" >
+        psdid,
+      </if>
+      <if test="personnelusername != null" >
+        personnelusername,
+      </if>
+      <if test="personnelname != null" >
+        personnelname,
+      </if>
+      <if test="personnelgender != null" >
+        personnelgender,
+      </if>
+      <if test="personnelage != null" >
+        personnelage,
+      </if>
+      <if test="personneladdress != null" >
+        personneladdress,
+      </if>
+      <if test="personnelphone != null" >
+        personnelphone,
+      </if>
+      <if test="personnelmobilephone != null" >
+        personnelmobilephone,
+      </if>
+      <if test="personnelemail != null" >
+        personnelemail,
+      </if>
+      <if test="personnelpolitics != null" >
+        personnelpolitics,
+      </if>
+      <if test="personneljob != null" >
+        personneljob,
+      </if>
+      <if test="personneldepartment != null" >
+        personneldepartment,
+      </if>
+      <if test="personnelentrydate != null" >
+        personnelentrydate,
+      </if>
+      <if test="personnelsalary != null" >
+        personnelsalary,
+      </if>
+      <if test="personnelstatus != null" >
+        personnelstatus,
+      </if>
+      <if test="personnelpassword != null" >
+        personnelpassword,
+      </if>
+      <if test="personnelpasswordquestion != null" >
+        personnelpasswordquestion,
+      </if>
+      <if test="personnelpasswordanswer != null" >
+        personnelpasswordanswer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="personnelid != null" >
+        #{personnelid,jdbcType=INTEGER},
+      </if>
+      <if test="psdid != null" >
+        #{psdid,jdbcType=INTEGER},
+      </if>
+      <if test="personnelusername != null" >
+        #{personnelusername,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelname != null" >
+        #{personnelname,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelgender != null" >
+        #{personnelgender,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelage != null" >
+        #{personnelage,jdbcType=INTEGER},
+      </if>
+      <if test="personneladdress != null" >
+        #{personneladdress,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelphone != null" >
+        #{personnelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelmobilephone != null" >
+        #{personnelmobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelemail != null" >
+        #{personnelemail,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelpolitics != null" >
+        #{personnelpolitics,jdbcType=VARCHAR},
+      </if>
+      <if test="personneljob != null" >
+        #{personneljob,jdbcType=VARCHAR},
+      </if>
+      <if test="personneldepartment != null" >
+        #{personneldepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelentrydate != null" >
+        #{personnelentrydate,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelsalary != null" >
+        #{personnelsalary,jdbcType=INTEGER},
+      </if>
+      <if test="personnelstatus != null" >
+        #{personnelstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelpassword != null" >
+        #{personnelpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelpasswordquestion != null" >
+        #{personnelpasswordquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelpasswordanswer != null" >
+        #{personnelpasswordanswer,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wuliu.pojo.PersonnelExample" resultType="java.lang.Integer" >
+    select count(*) from personnel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update personnel
+    <set >
+      <if test="record.personnelid != null" >
+        personnelid = #{record.personnelid,jdbcType=INTEGER},
+      </if>
+      <if test="record.psdid != null" >
+        psdid = #{record.psdid,jdbcType=INTEGER},
+      </if>
+      <if test="record.personnelusername != null" >
+        personnelusername = #{record.personnelusername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personnelname != null" >
+        personnelname = #{record.personnelname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personnelgender != null" >
+        personnelgender = #{record.personnelgender,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personnelage != null" >
+        personnelage = #{record.personnelage,jdbcType=INTEGER},
+      </if>
+      <if test="record.personneladdress != null" >
+        personneladdress = #{record.personneladdress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personnelphone != null" >
+        personnelphone = #{record.personnelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personnelmobilephone != null" >
+        personnelmobilephone = #{record.personnelmobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personnelemail != null" >
+        personnelemail = #{record.personnelemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personnelpolitics != null" >
+        personnelpolitics = #{record.personnelpolitics,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personneljob != null" >
+        personneljob = #{record.personneljob,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personneldepartment != null" >
+        personneldepartment = #{record.personneldepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personnelentrydate != null" >
+        personnelentrydate = #{record.personnelentrydate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personnelsalary != null" >
+        personnelsalary = #{record.personnelsalary,jdbcType=INTEGER},
+      </if>
+      <if test="record.personnelstatus != null" >
+        personnelstatus = #{record.personnelstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personnelpassword != null" >
+        personnelpassword = #{record.personnelpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personnelpasswordquestion != null" >
+        personnelpasswordquestion = #{record.personnelpasswordquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personnelpasswordanswer != null" >
+        personnelpasswordanswer = #{record.personnelpasswordanswer,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update personnel
+    set personnelid = #{record.personnelid,jdbcType=INTEGER},
+      psdid = #{record.psdid,jdbcType=INTEGER},
+      personnelusername = #{record.personnelusername,jdbcType=VARCHAR},
+      personnelname = #{record.personnelname,jdbcType=VARCHAR},
+      personnelgender = #{record.personnelgender,jdbcType=VARCHAR},
+      personnelage = #{record.personnelage,jdbcType=INTEGER},
+      personneladdress = #{record.personneladdress,jdbcType=VARCHAR},
+      personnelphone = #{record.personnelphone,jdbcType=VARCHAR},
+      personnelmobilephone = #{record.personnelmobilephone,jdbcType=VARCHAR},
+      personnelemail = #{record.personnelemail,jdbcType=VARCHAR},
+      personnelpolitics = #{record.personnelpolitics,jdbcType=VARCHAR},
+      personneljob = #{record.personneljob,jdbcType=VARCHAR},
+      personneldepartment = #{record.personneldepartment,jdbcType=VARCHAR},
+      personnelentrydate = #{record.personnelentrydate,jdbcType=VARCHAR},
+      personnelsalary = #{record.personnelsalary,jdbcType=INTEGER},
+      personnelstatus = #{record.personnelstatus,jdbcType=VARCHAR},
+      personnelpassword = #{record.personnelpassword,jdbcType=VARCHAR},
+      personnelpasswordquestion = #{record.personnelpasswordquestion,jdbcType=VARCHAR},
+      personnelpasswordanswer = #{record.personnelpasswordanswer,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wuliu.pojo.Personnel" >
+    update personnel
+    <set >
+      <if test="psdid != null" >
+        psdid = #{psdid,jdbcType=INTEGER},
+      </if>
+      <if test="personnelusername != null" >
+        personnelusername = #{personnelusername,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelname != null" >
+        personnelname = #{personnelname,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelgender != null" >
+        personnelgender = #{personnelgender,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelage != null" >
+        personnelage = #{personnelage,jdbcType=INTEGER},
+      </if>
+      <if test="personneladdress != null" >
+        personneladdress = #{personneladdress,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelphone != null" >
+        personnelphone = #{personnelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelmobilephone != null" >
+        personnelmobilephone = #{personnelmobilephone,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelemail != null" >
+        personnelemail = #{personnelemail,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelpolitics != null" >
+        personnelpolitics = #{personnelpolitics,jdbcType=VARCHAR},
+      </if>
+      <if test="personneljob != null" >
+        personneljob = #{personneljob,jdbcType=VARCHAR},
+      </if>
+      <if test="personneldepartment != null" >
+        personneldepartment = #{personneldepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelentrydate != null" >
+        personnelentrydate = #{personnelentrydate,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelsalary != null" >
+        personnelsalary = #{personnelsalary,jdbcType=INTEGER},
+      </if>
+      <if test="personnelstatus != null" >
+        personnelstatus = #{personnelstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelpassword != null" >
+        personnelpassword = #{personnelpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelpasswordquestion != null" >
+        personnelpasswordquestion = #{personnelpasswordquestion,jdbcType=VARCHAR},
+      </if>
+      <if test="personnelpasswordanswer != null" >
+        personnelpasswordanswer = #{personnelpasswordanswer,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where personnelid = #{personnelid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wuliu.pojo.Personnel" >
+    update personnel
+    set psdid = #{psdid,jdbcType=INTEGER},
+      personnelusername = #{personnelusername,jdbcType=VARCHAR},
+      personnelname = #{personnelname,jdbcType=VARCHAR},
+      personnelgender = #{personnelgender,jdbcType=VARCHAR},
+      personnelage = #{personnelage,jdbcType=INTEGER},
+      personneladdress = #{personneladdress,jdbcType=VARCHAR},
+      personnelphone = #{personnelphone,jdbcType=VARCHAR},
+      personnelmobilephone = #{personnelmobilephone,jdbcType=VARCHAR},
+      personnelemail = #{personnelemail,jdbcType=VARCHAR},
+      personnelpolitics = #{personnelpolitics,jdbcType=VARCHAR},
+      personneljob = #{personneljob,jdbcType=VARCHAR},
+      personneldepartment = #{personneldepartment,jdbcType=VARCHAR},
+      personnelentrydate = #{personnelentrydate,jdbcType=VARCHAR},
+      personnelsalary = #{personnelsalary,jdbcType=INTEGER},
+      personnelstatus = #{personnelstatus,jdbcType=VARCHAR},
+      personnelpassword = #{personnelpassword,jdbcType=VARCHAR},
+      personnelpasswordquestion = #{personnelpasswordquestion,jdbcType=VARCHAR},
+      personnelpasswordanswer = #{personnelpasswordanswer,jdbcType=VARCHAR}
+    where personnelid = #{personnelid,jdbcType=INTEGER}
+  </update>
+</mapper>

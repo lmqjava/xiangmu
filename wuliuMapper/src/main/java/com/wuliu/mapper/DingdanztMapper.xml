@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wuliu.mapper.DingdanztMapper" >
+  <resultMap id="BaseResultMap" type="com.wuliu.pojo.Dingdanzt" >
+    <id column="orderstatus" property="orderstatus" jdbcType="INTEGER" />
+    <result column="personnellid" property="personnellid" jdbcType="INTEGER" />
+    <result column="orderlistid" property="orderlistid" jdbcType="INTEGER" />
+    <result column="orderneirong" property="orderneirong" jdbcType="VARCHAR" />
+    <result column="orderremark" property="orderremark" jdbcType="VARCHAR" />
+    <result column="orderstatuschagetime" property="orderstatuschagetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    orderstatus, personnellid, orderlistid, orderneirong, orderremark, orderstatuschagetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wuliu.pojo.DingdanztExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dingdanzt
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dingdanzt
+    where orderstatus = #{orderstatus,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dingdanzt
+    where orderstatus = #{orderstatus,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wuliu.pojo.DingdanztExample" >
+    delete from dingdanzt
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wuliu.pojo.Dingdanzt" >
+    insert into dingdanzt (orderstatus, personnellid, orderlistid, 
+      orderneirong, orderremark, orderstatuschagetime
+      )
+    values (#{orderstatus,jdbcType=INTEGER}, #{personnellid,jdbcType=INTEGER}, #{orderlistid,jdbcType=INTEGER}, 
+      #{orderneirong,jdbcType=VARCHAR}, #{orderremark,jdbcType=VARCHAR}, #{orderstatuschagetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wuliu.pojo.Dingdanzt" >
+    insert into dingdanzt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderstatus != null" >
+        orderstatus,
+      </if>
+      <if test="personnellid != null" >
+        personnellid,
+      </if>
+      <if test="orderlistid != null" >
+        orderlistid,
+      </if>
+      <if test="orderneirong != null" >
+        orderneirong,
+      </if>
+      <if test="orderremark != null" >
+        orderremark,
+      </if>
+      <if test="orderstatuschagetime != null" >
+        orderstatuschagetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderstatus != null" >
+        #{orderstatus,jdbcType=INTEGER},
+      </if>
+      <if test="personnellid != null" >
+        #{personnellid,jdbcType=INTEGER},
+      </if>
+      <if test="orderlistid != null" >
+        #{orderlistid,jdbcType=INTEGER},
+      </if>
+      <if test="orderneirong != null" >
+        #{orderneirong,jdbcType=VARCHAR},
+      </if>
+      <if test="orderremark != null" >
+        #{orderremark,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstatuschagetime != null" >
+        #{orderstatuschagetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wuliu.pojo.DingdanztExample" resultType="java.lang.Integer" >
+    select count(*) from dingdanzt
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update dingdanzt
+    <set >
+      <if test="record.orderstatus != null" >
+        orderstatus = #{record.orderstatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.personnellid != null" >
+        personnellid = #{record.personnellid,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderlistid != null" >
+        orderlistid = #{record.orderlistid,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderneirong != null" >
+        orderneirong = #{record.orderneirong,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderremark != null" >
+        orderremark = #{record.orderremark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderstatuschagetime != null" >
+        orderstatuschagetime = #{record.orderstatuschagetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update dingdanzt
+    set orderstatus = #{record.orderstatus,jdbcType=INTEGER},
+      personnellid = #{record.personnellid,jdbcType=INTEGER},
+      orderlistid = #{record.orderlistid,jdbcType=INTEGER},
+      orderneirong = #{record.orderneirong,jdbcType=VARCHAR},
+      orderremark = #{record.orderremark,jdbcType=VARCHAR},
+      orderstatuschagetime = #{record.orderstatuschagetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wuliu.pojo.Dingdanzt" >
+    update dingdanzt
+    <set >
+      <if test="personnellid != null" >
+        personnellid = #{personnellid,jdbcType=INTEGER},
+      </if>
+      <if test="orderlistid != null" >
+        orderlistid = #{orderlistid,jdbcType=INTEGER},
+      </if>
+      <if test="orderneirong != null" >
+        orderneirong = #{orderneirong,jdbcType=VARCHAR},
+      </if>
+      <if test="orderremark != null" >
+        orderremark = #{orderremark,jdbcType=VARCHAR},
+      </if>
+      <if test="orderstatuschagetime != null" >
+        orderstatuschagetime = #{orderstatuschagetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where orderstatus = #{orderstatus,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wuliu.pojo.Dingdanzt" >
+    update dingdanzt
+    set personnellid = #{personnellid,jdbcType=INTEGER},
+      orderlistid = #{orderlistid,jdbcType=INTEGER},
+      orderneirong = #{orderneirong,jdbcType=VARCHAR},
+      orderremark = #{orderremark,jdbcType=VARCHAR},
+      orderstatuschagetime = #{orderstatuschagetime,jdbcType=TIMESTAMP}
+    where orderstatus = #{orderstatus,jdbcType=INTEGER}
+  </update>
+</mapper>
