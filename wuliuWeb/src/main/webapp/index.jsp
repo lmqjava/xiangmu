@@ -64,7 +64,7 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="kitNavbar" kit-navbar>
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> 员工管理</span></a>
+                    <a class="" href="javascript:;"><i class="layui-icon" style="font-size: 15px; color: #00B83F;">&#xe770;</i><span> 员工管理</span></a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" kit-target
@@ -83,21 +83,25 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="fa fa-user" aria-hidden="false"></i><span> 车辆管理</span></a>
+                    <a href="javascript:;"><i class="layui-icon" style="font-size: 15px; color: #00B83F;">&#xe609;</i><span> 车辆管理</span></a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" data-url="vehicle.jsp" data-icon="fa-user" data-title="查询车辆信息" kit-target
                                data-id='5'>
-                                <i class="fa fa-user" aria-hidden="true"></i><span> 查询车辆信息</span></a>
+                                <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe62d;</i><span> 查询车辆信息</span></a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="/vehicle" data-icon="&#xe614;" data-title="添加车辆信息"
-                               kit-target data-id='7'><i class="layui-icon">&#xe614;</i><span> 添加车辆信息</span></a>
+                            <a href="javascript:;" data-url="vehicleadd.jsp" data-icon="&#xe614;" data-title="添加车辆信息"
+                               kit-target data-id='7'><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe654;</i><span> 添加车辆信息</span></a>
+                        </dd>
+                        <dd>
+                            <a href="javascript:;" data-url="vehiclemap.jsp" data-icon="&#xe614;" data-title="车辆信息总览"
+                               kit-target data-id='6'><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe62c;</i><span>车辆信息总览</span></a>
                         </dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> 路线管理</span></a>
+                    <a href="javascript:;"><i class="layui-icon" style="font-size: 15px; color: #00B83F;">&#xe7ae;</i><span> 路线管理</span></a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" data-url="route.jsp" data-icon="fa-user" data-title="查询路线信息" kit-target
@@ -111,7 +115,7 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> 运单管理</span></a>
+                    <a href="javascript:;"><i class="layui-icon" style="font-size: 15px; color: #00B83F;">&#xe63c;</i><span> 运单管理</span></a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" data-url="waybill.jsp" data-icon="fa-user" data-title="查询运单信息" kit-target
@@ -129,7 +133,7 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> 调度安排</span></a>
+                    <a href="javascript:;"><i class="layui-icon" style="font-size: 15px; color: #00B83F;">&#xe6b2;</i><span> 调度安排</span></a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" data-url="form.html" data-icon="fa-user" data-title="查询调度单" kit-target
@@ -147,7 +151,7 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> 信息管理</span></a>
+                    <a href="javascript:;"><i class="layui-icon" style="font-size: 15px; color: #00B83F;">&#xe62a;</i><span> 信息管理</span></a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" kit-target
                                data-options="{url:'navbar.html',icon:'&#xe658;',title:'Navbar',id:'6'}"><i
@@ -164,7 +168,7 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> 财务管理</span></a>
+                    <a href="javascript:;"><i class="layui-icon" style="font-size: 15px; color: #00B83F;">&#xe65e;</i><span> 财务管理</span></a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" kit-target
                                data-options="{url:'navbar.html',icon:'&#xe658;',title:'Navbar',id:'6'}"><i
@@ -181,7 +185,7 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span> 权限分配</span></a>
+                    <a href="javascript:;"><i class="layui-icon" style="font-size: 15px; color: #00B83F;">&#xe672;</i><span> 权限分配</span></a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" kit-target
                                data-options="{url:'navbar.html',icon:'&#xe658;',title:'Navbar',id:'6'}"><i
