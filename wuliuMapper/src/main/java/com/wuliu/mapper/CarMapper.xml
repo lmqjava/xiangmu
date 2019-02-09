@@ -17,6 +17,23 @@
     <result column="careunpath" property="careunpath" jdbcType="VARCHAR" />
     <result column="carsay" property="carsay" jdbcType="VARCHAR" />
   </resultMap>
+
+  <select id="selectAllCar" resultType="com.wuliu.pojo.Car">
+    select carid,carnum,cartype,cartun,carbox,cartime,carzt,pinpai,careunpath,carsay
+from car
+
+
+  </select>
+  <select id="selectAllCars" resultType="com.wuliu.pojo.Car">
+    select carid,carnum,cartype,cartun,carbox,cartime,carzt,pinpai,careunpath,carsay
+from car
+
+
+  </select>
+
+
+
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

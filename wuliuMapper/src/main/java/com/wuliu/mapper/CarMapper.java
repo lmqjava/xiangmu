@@ -2,10 +2,15 @@ package com.wuliu.mapper;
 
 import com.wuliu.pojo.Car;
 import com.wuliu.pojo.CarExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface CarMapper {
+
+    List<Car> selectAllCar();
+
+    List<Car> selectAllCars();
     int countByExample(CarExample example);
 
     int deleteByExample(CarExample example);
