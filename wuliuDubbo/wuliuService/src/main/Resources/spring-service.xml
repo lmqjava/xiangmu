@@ -21,6 +21,7 @@
   <!-- 对外暴露的服务接口 -->
  
     <dubbo:service interface="com.wuliu.service.IUserService" ref="userServiceImpl" />
-  
+    <dubbo:service interface="com.wuliu.service.IPeisongdian" ref="peisongdianImpl" />
+
     <dubbo:provider delay="-1" timeout="4000" retries="0" />
 </beans>

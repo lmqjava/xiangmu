@@ -9,6 +9,18 @@
     <result column="psemail" property="psemail" jdbcType="VARCHAR" />
     <result column="psxinxi" property="psxinxi" jdbcType="VARCHAR" />
   </resultMap>
+  <!--查询配送点信息-->
+  <select id="selectAll" resultMap="BaseResultMap">
+    SELECT psdid,peisongidianname,shengfen,psphone,psemail,psxinxi FROM peisongdian
+
+  </select>
+  <!--删除-->
+  <delete id="deletePeisongdian" parameterType="Integer" >
+    delete from peisongdian
+    where psdid = #{psdid}
+  </delete>
+
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

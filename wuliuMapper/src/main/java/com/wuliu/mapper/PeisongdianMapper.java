@@ -6,6 +6,23 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface PeisongdianMapper {
+
+    /*
+    查询配送点信息
+     */
+    List<Peisongdian> selectAll();
+    /*
+    删除
+     */
+    int deletePeisongdian(Integer psdid);
+    /*
+    修改
+     */
+
+    /*
+    添加
+     */
+
     int countByExample(PeisongdianExample example);
 
     int deleteByExample(PeisongdianExample example);
