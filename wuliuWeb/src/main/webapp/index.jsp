@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>WBG物流管理系统</title>
+    <title>速达物流管理系统</title>
     <link rel="stylesheet" href="./plugins/layui/css/layui.css" media="all"/>
     <link rel="stylesheet" href="./plugins/font-awesome/css/font-awesome.min.css" media="all"/>
     <link rel="stylesheet" href="./src/css/app.css" media="all"/>
@@ -44,7 +44,7 @@
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                    <img src="img/psb.jpg" class="layui-nav-img"> WBG
+                    <img src="img/psb.jpg" class="layui-nav-img"> LMQ
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="javascript:;" kit-target
@@ -86,16 +86,16 @@
                     <a href="javascript:;"><i class="layui-icon" style="font-size: 15px; color: #00B83F;">&#xe609;</i><span> 车辆管理</span></a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;" data-url="vehicle.jsp" data-icon="fa-user" data-title="查询车辆信息" kit-target
+                            <a href="javascript:;" data-url="vehicle.jsp" data-icon="&#xe62d;" data-title="查询车辆信息" kit-target
                                data-id='5'>
                                 <i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe62d;</i><span> 查询车辆信息</span></a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="vehicleadd.jsp" data-icon="&#xe614;" data-title="添加车辆信息"
+                            <a href="javascript:;" data-url="vehicleadd.jsp" data-icon="&#xe654;" data-title="添加车辆信息"
                                kit-target data-id='7'><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe654;</i><span> 添加车辆信息</span></a>
                         </dd>
                         <dd>
-                            <a href="javascript:;" data-url="vehiclemap.jsp" data-icon="&#xe614;" data-title="车辆信息总览"
+                            <a href="javascript:;" data-url="vehiclemap.jsp" data-icon="&#xe62c;" data-title="车辆信息总览"
                                kit-target data-id='6'><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe62c;</i><span>车辆信息总览</span></a>
                         </dd>
                     </dl>
@@ -154,10 +154,10 @@
                     <a href="javascript:;"><i class="layui-icon" style="font-size: 15px; color: #00B83F;">&#xe62a;</i><span> 信息管理</span></a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" kit-target
-                               data-options="{url:'peisong.jsp',icon:'&#xe658;',title:'配送点信息',id:'6'}"><i
+                               data-options="{url:'peisong.jsp',icon:'&#xe658;',title:'配送点信息',id:'17'}"><i
                                 class="layui-icon">&#xe658;</i><span> 配送点信息</span></a></dd>
                         <dd><a href="javascript:;" kit-target
-                               data-options="{url:'tab.html',icon:'&#xe658;',title:'TAB',id:'7'}"><i class="layui-icon">&#xe658;</i><span> Tab</span></a>
+                               data-options="{url:'addpeisong.jsp',icon:'&#xe658;',title:'TAB',id:'18'}"><i class="layui-icon">&#xe658;</i><span> Tab</span></a>
                         </dd>
                         <dd><a href="javascript:;" kit-target
                                data-options="{url:'onelevel.html',icon:'&#xe658;',title:'OneLevel',id:'50'}"><i
@@ -171,17 +171,11 @@
                     <a href="javascript:;"><i class="layui-icon" style="font-size: 15px; color: #00B83F;">&#xe65e;</i><span> 财务管理</span></a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" kit-target
-                               data-options="{url:'navbar.html',icon:'&#xe658;',title:'Navbar',id:'6'}"><i
-                                class="layui-icon">&#xe658;</i><span> 支出</span></a></dd>
+                               data-options="{url:'navbar.jsp',icon:'&#xe62a;',title:'Navbar',id:'30'}"><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe62a;</i><span>订单收入</span></a></dd>
                         <dd><a href="javascript:;" kit-target
-                               data-options="{url:'tab.html',icon:'&#xe658;',title:'TAB',id:'7'}"><i class="layui-icon">&#xe658;</i><span> Tab</span></a>
+                               data-options="{url:'navbarmap.jsp',icon:'&#xe629;',title:'TAB',id:'31'}"><i class="layui-icon" style="font-size: 30px; color: #1E9FFF;">&#xe629;</i><span>图表报表</span></a>
                         </dd>
-                        <dd><a href="javascript:;" kit-target
-                               data-options="{url:'onelevel.html',icon:'&#xe658;',title:'OneLevel',id:'50'}"><i
-                                class="layui-icon">&#xe658;</i><span> OneLevel</span></a></dd>
-                        <dd><a href="javascript:;" kit-target
-                               data-options="{url:'app.html',icon:'&#xe658;',title:'App',id:'8'}"><i class="layui-icon">&#xe658;</i><span> app.js主入口</span></a>
-                        </dd>
+
                     </dl>
                 </li>
                 <li class="layui-nav-item">
