@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/Peisongdian")
 @RestController
-public class PeisongdianController {
+public class PeisongdianController{
 
     @Autowired
     private IPeisongdian iPeisongdian;

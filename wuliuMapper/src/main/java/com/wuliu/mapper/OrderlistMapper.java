@@ -2,10 +2,13 @@ package com.wuliu.mapper;
 
 import com.wuliu.pojo.Orderlist;
 import com.wuliu.pojo.OrderlistExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface OrderlistMapper {
+    List<Orderlist> selectAllOrder();
+
     int countByExample(OrderlistExample example);
 
     int deleteByExample(OrderlistExample example);

@@ -29,6 +29,14 @@
     <result column="OrderlistRemark" property="orderlistremark" jdbcType="VARCHAR" />
     <result column="OrderlistIdentifyCode" property="orderlistidentifycode" jdbcType="INTEGER" />
   </resultMap>
+
+  <select id="selectAllOrder" resultType="com.wuliu.pojo.Orderlist">
+    select orderlistid,orderliststatus,startstationid,endstationid,orderlistassureprice,orderlistdate,orderlistremark,orderlistsenderpostcode,orderlistsenderphone,orderlistsenderEmail
+from orderlist
+
+
+  </select>
+
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

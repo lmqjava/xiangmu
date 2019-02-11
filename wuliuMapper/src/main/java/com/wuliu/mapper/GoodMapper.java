@@ -2,10 +2,13 @@ package com.wuliu.mapper;
 
 import com.wuliu.pojo.Good;
 import com.wuliu.pojo.GoodExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 public interface GoodMapper {
+
+
     int countByExample(GoodExample example);
 
     int deleteByExample(GoodExample example);
