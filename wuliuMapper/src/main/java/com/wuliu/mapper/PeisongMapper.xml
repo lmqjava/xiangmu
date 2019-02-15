@@ -3,6 +3,8 @@
 <mapper namespace="com.wuliu.mapper.PeisongMapper" >
 
   <select id="selectAll" resultType="com.wuliu.pojo.Peisong">
-    SELECT p.`pathname`,r.`fhadd`,r.`shadd`,r.`firstprice`,r.`cgjprice`,r.`stjprice`,r.`cgjprice`,r.`sslxn` FROM path p,addprice a,runprice r WHERE p.`pathid`=a.`pathid` AND a.`runpriceid`=r.`runpriceid`
+    SELECT p.`pathname`,r.`fhadd`,r.`shadd`,r.`firstprice`,r.`cgjprice`,r.`stjprice`,r.`ctjprice`,r.`sslxn` FROM path p,addprice a,runprice r WHERE p.`pathid`=a.`pathid` AND a.`runpriceid`=r.`runpriceid`
   </select>
+
+
 </mapper>

@@ -17,7 +17,7 @@
 	<!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
 </head>
 <body>
-<form class="layui-form layui-form-pane" action="">
+<form class="layui-form layui-form-pane" action="/Peisongdian/insertPeisongdian">
 
 	<div class="layui-form-item">
 		<label class="layui-form-label">配送点名称</label>
@@ -50,7 +50,7 @@
 		</div>
 	</div>
 	<div class="layui-form-item">
-		<button class="layui-btn" lay-filter="demo1" lay-submit="">跳转式提交</button>
+		<button class="layui-btn" lay-filter="demo1" lay-submit="">提交</button>
 	</div>
 </form>
 
@@ -78,35 +78,39 @@
 
 
         //监听提交
+        // form.on('submit(demo1)', function(data){
+        //     layer.alert(JSON.stringify(data.field), {
+        //         title: '最终的提交信息'
+        //     })
+        //
+        //     return false;
+        // });
         form.on('submit(demo1)', function(data){
-            layer.alert(JSON.stringify(data.field), {
-                title: '最终的提交信息'
-            })
-            return false;
+            layer.alert("添加成功")
         });
 
-
+        email.onchange = function() {
+            var email = this.value;
+            var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+            if (!reg.test(email)) {
+                layer.alert("邮箱格式不正确");
+            // } else {
+            //     layer.alert("邮箱格式不正确");
+            }
+        }
+        phone.onchange = function() {
+            var phone = this.value;
+            var reg = /^1(3|4|5|7|8)\d{9}$/;
+            if (!reg.test(phone)) {
+                layer.alert("电话格式不正确");
+            // } else {
+            //     layer.alert("电话格式不正确");
+            }
+        }
 
 
     });
-    email.onchange = function() {
-        var email = this.value;
-        var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
-        if (reg.test(email)) {
-            alert("邮箱格式正确");
-        } else {
-            alert("邮箱格式不正确");
-        }
-    }
-    phone.onchange = function() {
-        var phone = this.value;
-        var reg = /^1(3|4|5|7|8)\d{9}$/;
-        if (reg.test(phone)) {
-            alert("电话格式正确");
-        } else {
-            alert("电话格式不正确");
-        }
-    }
+
 </script>
 </body>
 </html>

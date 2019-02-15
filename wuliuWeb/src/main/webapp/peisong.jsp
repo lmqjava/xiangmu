@@ -22,7 +22,7 @@
 		<button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
 		<button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
 		<button class="layui-btn" data-type="isAll">验证是否全选</button>
-		<a onclick="TJ();" class="layui-btn layui-inline fl w130">添加</a>
+
 	</div>
 </script>
 
@@ -118,7 +118,7 @@
                     }, {
                         field : 'psdid',
                         title : '配送点编号',
-                        width : 100,
+                        width : 120,
                         fixed : 'left',
                         unresize : true,
                         sort : true
@@ -130,7 +130,7 @@
                     }, {
                         field : 'shengfen',
                         title : '所属省份',
-                        width : 120,
+                        width : 140,
                         edit : 'text'
                     }, {
                         field : 'psphone',
@@ -144,7 +144,7 @@
                     }, {
                         field : 'psxinxi',
                         title : '详细信息',
-                        width : 150
+                        width : 207
 
                     }, {
                         fixed : 'right',
@@ -188,11 +188,11 @@
                                     .open({
                                         area : '500px',
                                         maxHeight : '600px',
-                                        content : '<form class="layui-form" action="/client/updateAll" method="post" lay-filter="example">'
+                                        content : '<form class="layui-form" action="/Peisongdian/updatePeisongdian" method="post" lay-filter="example">'
                                             + '<div class="layui-form-item">'
                                             + '<label class="layui-form-label">编号：</label>'
                                             + '<div class="layui-input-block">'
-                                            + '<input type="text"  name="psdid"  lay-verify="title" autocomplete="off" class="layui-input">'
+                                            + '<input type="text"  name="psdid"  lay-verify="title" autocomplete="off" class="layui-input" disabled="true">'
                                             + '</div>'
                                             + '</div>'
                                             +
@@ -216,7 +216,7 @@
                                             '<div class="layui-form-item">'
                                             + '<label class="layui-form-label">联系电话：</label>'
                                             + '<div class="layui-input-block">'
-                                            + '<input type="text" name="psphone"  placeholder="请输入" autocomplete="off" class="layui-input">'
+                                            + '<input type="text" name="psphone"  placeholder="请输入" autocomplete="off" class="layui-input" id="phone">'+'<span style="color: red" id="phones" ></span>'
                                             + '</div>'
                                             + '</div>'
                                             +
@@ -224,7 +224,7 @@
                                             '<div class="layui-form-item">'
                                             + '<label class="layui-form-label">邮箱：</label>'
                                             + '<div class="layui-input-block">'
-                                            + '<input type="text" name="psemail"  placeholder="请输入" autocomplete="off" class="layui-input">'
+                                            + '<input type="text" name="psemail"  placeholder="请输入" autocomplete="off" class="layui-input" id="email">'+'<span style="color: red" id="emails" ></span>'
                                             + '</div>'
                                             + '</div>'
                                             +
@@ -247,7 +247,28 @@
                                             + '</div>'
                                             + '</form>'
 
+
+
                                     });
+                                email.onchange = function() {
+                                    var email = this.value;
+                                    var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+                                    if (!reg.test(email)) {
+                                        $("#emails").text("邮箱格式不正确");
+
+                                    // } else {
+                                    //     $("#emails").text("邮箱格式不正确");
+                                     }
+                                }
+                                phone.onchange = function() {
+                                    var phone = this.value;
+                                    var reg = /^1(3|4|5|7|8)\d{9}$/;
+                                    if (!reg.test(phone)) {
+                                        $("#phones").text("电话格式不正确");
+                                    // } else {
+                                    //     $("#phones").text("电话格式不正确");
+                                    }
+                                }
                                 layui
                                     .use(
                                         [ 'form' ],
@@ -270,7 +291,7 @@
                                                                 });
                                                         $
                                                             .ajax({
-                                                                url : "/Peisongdian/updateCar",
+                                                                url : "/Peisongdian/updatePeisongdian",
                                                                 method : "post",
                                                                 data : data.field,
                                                                 success : function(
@@ -308,7 +329,7 @@
                                                 .close(index);
                                             $
                                                 .ajax({
-                                                    url : "/Peisongdian/deletePeisongdian?tid="
+                                                    url : "/Peisongdian/deletePeisongdian?psdid="
                                                         + data.psdid,
                                                     method : 'post',
                                                     success : function(

@@ -157,7 +157,7 @@
                                data-options="{url:'peisong.jsp',icon:'&#xe658;',title:'配送点信息',id:'17'}"><i
                                 class="layui-icon">&#xe658;</i><span> 配送点信息</span></a></dd>
                         <dd><a href="javascript:;" kit-target
-                               data-options="{url:'addpeisong.jsp',icon:'&#xe658;',title:'TAB',id:'18'}"><i class="layui-icon">&#xe658;</i><span> Tab</span></a>
+                               data-options="{url:'addpeisong.jsp',icon:'&#xe658;',title:'添加配送点',id:'18'}"><i class="layui-icon">&#xe658;</i><span> 添加配送点</span></a>
                         </dd>
                         <dd><a href="javascript:;" kit-target
                                data-options="{url:'onelevel.html',icon:'&#xe658;',title:'OneLevel',id:'50'}"><i

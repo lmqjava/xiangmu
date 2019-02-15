@@ -15,4 +15,12 @@ public interface IPeisongdian {
     删除
      */
     int deletePeisongdian(Integer psdid);
+    /*
+    添加
+     */
+    int insertPeisongdian(Peisongdian peisongdian);
+    /*
+    修改
+     */
+    int updatePeisongdian(Peisongdian peisongdian);
 }

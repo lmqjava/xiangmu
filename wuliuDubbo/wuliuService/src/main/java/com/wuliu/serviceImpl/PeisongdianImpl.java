@@ -34,4 +34,14 @@ public class PeisongdianImpl implements IPeisongdian {
     public int deletePeisongdian(Integer psdid) {
         return peisongdianMapper.deletePeisongdian(psdid);
     }
+
+    @Override
+    public int insertPeisongdian(Peisongdian peisongdian) {
+        return peisongdianMapper.insertPeisongdian(peisongdian);
+    }
+
+    @Override
+    public int updatePeisongdian(Peisongdian peisongdian) {
+        return peisongdianMapper.updatePeisongdian(peisongdian);
+    }
 }

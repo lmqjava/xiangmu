@@ -1,5 +1,6 @@
 package com.wuliu.controller;
 
+import com.wuliu.pojo.Peisongdian;
 import com.wuliu.service.IPeisongdian;
 import com.wuliu.utils.LayUiUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,28 @@ public class PeisongdianController{
     @RequestMapping("/deletePeisongdian")
     public void delectP(@RequestParam(name = "psdid")Integer psdid){
         iPeisongdian.deletePeisongdian(psdid);
+    }
+
+    @RequestMapping("/insertPeisongdian")
+    public void insertP(@RequestParam(name ="peisongidianname" )String peisongidianname,
+                        @RequestParam(name ="shengfen" )String shengfen,
+                        @RequestParam(name ="psphone" )String psphone,
+                        @RequestParam(name ="psemail" )String psemail,
+                        @RequestParam(name ="psxinxi" )String psxinxi){
+        Peisongdian peisongdian=new Peisongdian(peisongidianname,shengfen,psphone,psemail,psxinxi);
+        iPeisongdian.insertPeisongdian(peisongdian);
+    }
+    @RequestMapping("/updatePeisongdian")
+    public String updateP(@RequestParam(name = "psdid")Integer psdid,
+                          @RequestParam(name ="peisongidianname" )String peisongidianname,
+                          @RequestParam(name ="shengfen" )String shengfen,
+                          @RequestParam(name ="psphone" )String psphone,
+                          @RequestParam(name ="psemail" )String psemail,
+                          @RequestParam(name ="psxinxi" )String psxinxi) {
+        System.out.print("进入");
+        Peisongdian peisongdian=new Peisongdian(psdid,peisongidianname,shengfen,psphone,psemail,psxinxi);
+        System.out.print(peisongdian);
+        iPeisongdian.updatePeisongdian(peisongdian);
+        return "redirect:/Peisongdian/selectAll";
     }
 }

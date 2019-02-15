@@ -18,10 +18,11 @@ public interface PeisongdianMapper {
     /*
     修改
      */
-
+    int updatePeisongdian(Peisongdian peisongdian);
     /*
     添加
      */
+    int insertPeisongdian(Peisongdian peisongdian);
 
     int countByExample(PeisongdianExample example);
 

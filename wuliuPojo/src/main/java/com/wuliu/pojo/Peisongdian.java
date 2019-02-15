@@ -64,4 +64,24 @@ public class Peisongdian implements Serializable {
     public void setPsxinxi(String psxinxi) {
         this.psxinxi = psxinxi == null ? null : psxinxi.trim();
     }
+
+    public Peisongdian() {
+    }
+
+    public Peisongdian(String peisongidianname, String shengfen, String psphone, String psemail, String psxinxi) {
+        this.peisongidianname = peisongidianname;
+        this.shengfen = shengfen;
+        this.psphone = psphone;
+        this.psemail = psemail;
+        this.psxinxi = psxinxi;
+    }
+
+    public Peisongdian(Integer psdid, String peisongidianname, String shengfen, String psphone, String psemail, String psxinxi) {
+        this.psdid = psdid;
+        this.peisongidianname = peisongidianname;
+        this.shengfen = shengfen;
+        this.psphone = psphone;
+        this.psemail = psemail;
+        this.psxinxi = psxinxi;
+    }
 }

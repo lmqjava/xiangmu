@@ -19,6 +19,17 @@
     delete from peisongdian
     where psdid = #{psdid}
   </delete>
+  <!--添加-->
+  <insert id="insertPeisongdian">
+  INSERT INTO peisongdian(peisongidianname,shengfen,psphone,psemail,psxinxi)
+  VALUES(peisongidianname=#{peisongidianname},shengfen=#{shengfen},psphone=#{psphone},psemail=#{psemail},psxinxi=#{psxinxi})
+  </insert>
+
+  <!--修改-->
+  <update id="updatePeisongdian">
+    update peisongdian set peisongidianname=#{peisongidianname},shengfen=#{shengfen},psphone=#{psphone},psemail=#{psemail},psxinxi=#{psxinxi}
+    where psdid=#{psdid}
+  </update>
 
 
   <sql id="Example_Where_Clause" >
