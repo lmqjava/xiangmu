@@ -1,6 +1,7 @@
 package com.wuliu.mapper;
 
 import com.wuliu.pojo.Orderlist;
+import com.wuliu.pojo.Orderlist2;
 import com.wuliu.pojo.OrderlistExample;
 import org.apache.ibatis.annotations.Param;
 
@@ -30,4 +31,7 @@ public interface OrderlistMapper {
     int updateByPrimaryKeySelective(Orderlist record);
 
     int updateByPrimaryKey(Orderlist record);
+
+    List<Orderlist2> getTwo();
+
 }

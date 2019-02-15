@@ -30,6 +30,44 @@
     <result column="OrderlistIdentifyCode" property="orderlistidentifycode" jdbcType="INTEGER" />
   </resultMap>
 
+  <resultMap id="BaseResultMap2" type="com.wuliu.pojo.Orderlist2" >
+    <id column="orderlistid" property="orderlistid" jdbcType="INTEGER" />
+    <result column="clientid" property="clientid" jdbcType="INTEGER" />
+    <result column="orderliststatus" property="orderliststatus" jdbcType="VARCHAR" />
+    <result column="startstationid" property="startstationid" jdbcType="VARCHAR" />
+    <result column="endstationid" property="endstationid" jdbcType="VARCHAR" />
+    <result column="orderlistweight" property="orderlistweight" jdbcType="REAL" />
+    <result column="orderlistvolume" property="orderlistvolume" jdbcType="REAL" />
+    <result column="orderlistdeliverprice" property="orderlistdeliverprice" jdbcType="REAL" />
+    <result column="orderlistdispatchprice" property="orderlistdispatchprice" jdbcType="REAL" />
+    <result column="orderlistassuretprice" property="orderlistassuretprice" jdbcType="REAL" />
+    <result column="OrderlistAssureValue" property="orderlistassurevalue" jdbcType="REAL" />
+    <result column="OrderlistAssurePrice" property="orderlistassureprice" jdbcType="REAL" />
+    <result column="OrderlistDate" property="orderlistdate" jdbcType="DATE" />
+    <result column="OrderlistReceiverName" property="orderlistreceivername" jdbcType="VARCHAR" />
+    <result column="OrderlistReceiverPhone" property="orderlistreceiverphone" jdbcType="VARCHAR" />
+    <result column="OrderlistReceiverMobil" property="orderlistreceivermobil" jdbcType="VARCHAR" />
+    <result column="OrderlistReceiverAddress" property="orderlistreceiveraddress" jdbcType="VARCHAR" />
+    <result column="OrderlistReceiverPostC" property="orderlistreceiverpostc" jdbcType="VARCHAR" />
+    <result column="OrderlistSenderName" property="orderlistsendername" jdbcType="VARCHAR" />
+    <result column="OrderlistSenderFax" property="orderlistsenderfax" jdbcType="VARCHAR" />
+    <result column="OrderlistSenderPostCode" property="orderlistsenderpostcode" jdbcType="VARCHAR" />
+    <result column="OrderlistSenderPhone" property="orderlistsenderphone" jdbcType="VARCHAR" />
+    <result column="OrderlistSenderEmail" property="orderlistsenderemail" jdbcType="VARCHAR" />
+    <result column="OrderRequestDate" property="orderrequestdate" jdbcType="DATE" />
+    <result column="OrderlistRemark" property="orderlistremark" jdbcType="VARCHAR" />
+    <result column="OrderlistIdentifyCode" property="orderlistidentifycode" jdbcType="INTEGER" />
+    <association property="client" javaType="com.wuliu.pojo.Client">
+      <result column="clientusername" property="clientusername" jdbcType="VARCHAR" />
+      <result column="clientaddress" property="clientaddress" jdbcType="VARCHAR" />
+      <result column="clientphone" property="clientphone" jdbcType="VARCHAR" />
+      <result column="clientemail" property="clientemail" jdbcType="VARCHAR" />
+      <result column="clientpassword" property="clientpassword" jdbcType="VARCHAR" />
+      <result column="clientpasswordquestion" property="clientpasswordquestion" jdbcType="VARCHAR" />
+      <result column="clientpasswordanswer" property="clientpasswordanswer" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+
   <select id="selectAllOrder" resultType="com.wuliu.pojo.Orderlist">
     select orderlistid,orderliststatus,startstationid,endstationid,orderlistassureprice,orderlistdate,orderlistremark,orderlistsenderpostcode,orderlistsenderphone,orderlistsenderEmail
 from orderlist
@@ -103,6 +141,21 @@ from orderlist
     OrderlistSenderName, OrderlistSenderFax, OrderlistSenderPostCode, OrderlistSenderPhone, 
     OrderlistSenderEmail, OrderRequestDate, OrderlistRemark, OrderlistIdentifyCode
   </sql>
+
+  <select id="getTwo" resultMap="BaseResultMap2">
+    select
+    o1.orderlistid, o1.clientid,orderliststatus, o1.startstationid, o1.endstationid, o1.orderlistweight,
+    o1.orderlistvolume, o1.orderlistdeliverprice, o1.orderlistdispatchprice, o1.orderlistassuretprice,
+    o1.OrderlistAssureValue, o1.OrderlistAssurePrice, o1.OrderlistDate, o1.OrderlistReceiverName,
+    o1.OrderlistReceiverPhone, o1.OrderlistReceiverMobil, o1.OrderlistReceiverAddress, o1.OrderlistReceiverPostC,
+    o1.OrderlistSenderName, o1.OrderlistSenderFax, o1.OrderlistSenderPostCode, o1.OrderlistSenderPhone,
+    o1.OrderlistSenderEmail, o1.OrderRequestDate, o1.OrderlistRemark, o1.OrderlistIdentifyCode
+    ,c1.clientid,, c1.clientusername, c1.clientaddress, c1.clientphone, c1.clientemail, c1.clientpassword,
+    c1.clientpasswordquestion, c1.clientpasswordanswer
+
+    from orderlist o1,client c1 where o1.clientid = c1.clientid
+
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wuliu.pojo.OrderlistExample" >
     select
     <if test="distinct" >

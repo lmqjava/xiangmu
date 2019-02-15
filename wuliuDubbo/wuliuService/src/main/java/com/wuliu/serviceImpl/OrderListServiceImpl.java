@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.wuliu.mapper.OrderlistMapper;
 import com.wuliu.pojo.Orderlist;
+import com.wuliu.pojo.Orderlist2;
 import com.wuliu.service.OrderListService;
 import com.wuliu.utils.LayUiUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,10 @@ public class OrderListServiceImpl implements OrderListService {
         lau.setMsg("");
         return lau;
 
+    }
+
+    @Override
+    public List<Orderlist2> getTwo() {
+        return orderlistMapper.getTwo();
     }
 }

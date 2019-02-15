@@ -3,7 +3,7 @@ package com.wuliu.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Orderlist implements Serializable {
+public class Orderlist2 implements Serializable {
     private Integer orderlistid;
 
     private Integer clientid;
@@ -56,7 +56,15 @@ public class Orderlist implements Serializable {
 
     private Integer orderlistidentifycode;
 
+    private Client client;
 
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
 
     private static final long serialVersionUID = 1L;
 
